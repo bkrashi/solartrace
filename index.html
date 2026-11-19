@@ -4,222 +4,81 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SolarTrace</title>
-  <meta name="description" content="SolarTrace helps non-experts see forced-labour exposure in solar supply chains, separating verified records from suspected links and missing information." />
+  <meta name="description" content="SolarTrace traces a real solar supply chain from a US importer back to polysilicon producers in Xinjiang, separating verified records from suspected exposure and missing information." />
+  <meta property="og:title" content="SolarTrace: who made the sunlight?" />
+  <meta property="og:description" content="An interactive investigation of forced-labour exposure in solar supply chains." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='7' fill='%23D4901A'/%3E%3Cg stroke='%231E4630' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M16 2v4M16 26v4M2 16h4M26 16h4M6 6l3 3M23 23l3 3M6 26l3-3M23 9l3-3'/%3E%3C/g%3E%3C/svg%3E" />
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
+  <a class="skip" href="#app">Skip to content</a>
 
-  <div class="sample-ribbon" role="note" id="sampleRibbon">
-    <strong>Illustrative sample data</strong>
-    <span>The companies, records and shipment counts are fictional and show how SolarTrace works. Linked public sources are real.</span>
-    <span class="provider-status" id="providerStatus"></span>
-  </div>
-
-  <header class="masthead">
-    <a class="brand" href="#/overview" aria-label="SolarTrace home">
+  <header class="masthead" id="masthead">
+    <a class="brand" href="#/" aria-label="SolarTrace home">
       <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="7" fill="var(--amber)"/><g stroke="var(--forest)" stroke-width="2.5" stroke-linecap="round"><path d="M16 2v4M16 26v4M2 16h4M26 16h4M6 6l3 3M23 23l3 3M6 26l3-3M23 9l3-3"/></g></svg>
       <span>Solar<em>Trace</em></span>
     </a>
-    <nav class="tabs" aria-label="Views">
-      <a href="#/overview" data-view="overview"><span class="num">01</span> The problem</a>
-      <a href="#/network" data-view="network"><span class="num">02</span> The network</a>
-      <a href="#/findings" data-view="findings"><span class="num">03</span> Findings</a>
+
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="#/" data-route="home">Story</a>
+      <a href="#/globe" data-route="globe">Globe</a>
+      <a href="#/network" data-route="network">Network</a>
+      <a href="#/companies" data-route="companies">Companies</a>
+      <a href="#/findings" data-route="findings">Findings</a>
+      <a href="#/timeline" data-route="timeline">Timeline</a>
+      <a href="#/method" data-route="method">Method</a>
+      <a href="#/sources" data-route="sources">Sources</a>
     </nav>
-    <button class="demo-btn" id="demoToggle" type="button" aria-pressed="false">
+
+    <a class="live-pill" href="#/sources" id="livePill" title="Data provenance">
+      <i></i><span id="livePillText">Live data</span>
+    </a>
+    <button class="demo-btn" id="demoToggle" type="button" aria-pressed="false" title="Presenter mode (D)">
       <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>
-      <span>3-min demo</span>
+      <span>Demo</span>
+    </button>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu">
+      <span></span><span></span><span></span>
     </button>
   </header>
 
-  <main id="main">
-    <!-- ============ 01 · OVERVIEW ============ -->
-    <section class="view" id="view-overview" data-view="overview" aria-labelledby="h-overview">
-      <div class="hero">
-        <div class="hero-copy">
-          <p class="kicker">An investigation dashboard for solar supply chains</p>
-          <h1 id="h-overview">Clean energy should not depend on forced labour.</h1>
-          <p class="lede">A solar panel passes through about six factories before it reaches a rooftop. Much of the world's polysilicon, the purified silicon inside every cell, comes from a region where government-imposed forced labour has been documented. SolarTrace follows a panel back through each step and tells you how much of the trail is <mark class="m-verified">proven</mark>, how much is <mark class="m-suspected">suspected</mark>, and where the <mark class="m-missing">records run out</mark>.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#/network">Follow a panel upstream <span aria-hidden="true">→</span></a>
-            <a class="btn btn-ghost" href="#/findings">Jump to findings</a>
-          </div>
-        </div>
-        <figure class="hero-art" aria-hidden="true">
-          <svg viewBox="0 0 400 400">
-            <defs>
-              <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="var(--amber)" stop-opacity=".55"/>
-                <stop offset="100%" stop-color="var(--amber)" stop-opacity="0"/>
-              </radialGradient>
-            </defs>
-            <circle cx="200" cy="170" r="160" fill="url(#sunGlow)"/>
-            <circle cx="200" cy="170" r="70" fill="var(--amber)"/>
-            <g class="panel-grid" transform="translate(70 230) skewX(-18)">
-              <rect width="270" height="130" rx="6" fill="var(--forest)"/>
-              <g stroke="var(--ivory)" stroke-opacity=".35" stroke-width="1.5">
-                <path d="M45 0v130M90 0v130M135 0v130M180 0v130M225 0v130M0 43h270M0 87h270"/>
-              </g>
-            </g>
-            <g class="trace-line" fill="none" stroke="var(--forest)" stroke-width="2" stroke-dasharray="4 6">
-              <path d="M205 295 C 140 300, 120 360, 40 380"/>
-            </g>
-          </svg>
-        </figure>
-      </div>
+  <main id="app" tabindex="-1"></main>
 
-      <div class="stat-band" id="contextStats" aria-label="Context from public sources"></div>
-
-      <div class="section">
-        <header class="section-head">
-          <p class="kicker">How a panel is made</p>
-          <h2>Six factories, five borders, one question</h2>
-          <p class="section-lede">Forced-labour risk is usually concentrated at the start of the chain, in silicon smelting and polysilicon. By the time a panel is assembled in Southeast Asia, its origin is hard to see.</p>
-        </header>
-        <ol class="chain" id="chainSteps"></ol>
-      </div>
-
-      <div class="section evidence-explainer">
-        <header class="section-head">
-          <p class="kicker">How to read this dashboard</p>
-          <h2>Every claim carries its evidence label</h2>
-          <p class="section-lede">Investigations fail when a hunch is presented as a fact, or when a missing record is treated as proof that nothing is wrong. SolarTrace keeps three categories apart.</p>
-        </header>
-        <div class="evidence-cards">
-          <article class="ev-card ev-verified">
-            <div class="ev-swatch"><svg viewBox="0 0 120 20"><line x1="4" y1="10" x2="116" y2="10"/></svg></div>
-            <h3><span class="badge badge-verified">Verified record</span></h3>
-            <p>A document we can point to, such as a registry filing, a bill of lading or a customs declaration. Drawn as a <strong>solid green line</strong>.</p>
-          </article>
-          <article class="ev-card ev-suspected">
-            <div class="ev-swatch"><svg viewBox="0 0 120 20"><line x1="4" y1="10" x2="116" y2="10"/></svg></div>
-            <h3><span class="badge badge-suspected">Suspected exposure</span></h3>
-            <p>Indicators point to a link, such as a press announcement, a shared director or a shared location, but no direct record confirms it. Drawn as a <strong>dashed amber line</strong>.</p>
-          </article>
-          <article class="ev-card ev-missing">
-            <div class="ev-swatch"><svg viewBox="0 0 120 20"><line x1="4" y1="10" x2="116" y2="10"/></svg></div>
-            <h3><span class="badge badge-missing">Missing information</span></h3>
-            <p>We looked and could not find the record needed to answer the question. This is not an accusation, but it is not a clean result either. Drawn as a <strong>dotted grey line</strong>.</p>
-          </article>
-        </div>
-      </div>
-
-      <div class="section data-sources">
-        <header class="section-head">
-          <p class="kicker">Where the evidence comes from</p>
-          <h2>Three sources, three different jobs</h2>
-        </header>
-        <div class="source-grid">
-          <article><h3>Sayari</h3><p>Corporate registries, ownership chains, officers and shipment records from 250+ jurisdictions. Answers the question: <em>who owns whom?</em></p></article>
-          <article><h3>Tradeverifyd</h3><p>Trade relationships, risk annotations and entity scores. Answers the question: <em>who ships to whom, and what has been reported about them?</em></p></article>
-          <article><h3>Tavily</h3><p>Search over public reporting from government notices, NGO research and journalism. Answers the question: <em>what is already publicly known?</em></p></article>
-        </div>
-      </div>
-
-      <div class="cta-band">
-        <h2>Follow one shipment of panels back to the source.</h2>
-        <a class="btn btn-amber" href="#/network">Open the network <span aria-hidden="true">→</span></a>
-      </div>
-    </section>
-
-    <!-- ============ 02 · NETWORK ============ -->
-    <section class="view" id="view-network" data-view="network" aria-labelledby="h-network" hidden>
-      <header class="view-head">
-        <div>
-          <p class="kicker">Ownership &amp; trade network · <span class="sample-tag">Sample</span></p>
-          <h1 id="h-network">Where do Lumen Ridge's panels really come from?</h1>
-          <p class="section-lede">Read from right to left, the way an investigator works backwards from the importer. Click a company or a line to see the record behind it.</p>
-        </div>
-        <div class="net-actions">
-          <button class="btn btn-primary" id="traceBtn" type="button" aria-pressed="false">Trace exposure path</button>
-          <button class="btn btn-ghost" id="resetBtn" type="button">Reset</button>
-        </div>
-      </header>
-
-      <div class="net-toolbar" role="group" aria-label="Network filters">
-        <fieldset>
-          <legend>Show links</legend>
-          <label class="chip"><input type="checkbox" data-filter="trade" checked /> <span>Trade</span></label>
-          <label class="chip"><input type="checkbox" data-filter="ownership" checked /> <span>Ownership</span></label>
-        </fieldset>
-        <fieldset>
-          <legend>Evidence</legend>
-          <label class="chip chip-verified"><input type="checkbox" data-filter="verified" checked /> <span>Verified</span></label>
-          <label class="chip chip-suspected"><input type="checkbox" data-filter="suspected" checked /> <span>Suspected</span></label>
-          <label class="chip chip-missing"><input type="checkbox" data-filter="missing" checked /> <span>Missing</span></label>
-        </fieldset>
-      </div>
-
-      <div class="net-layout">
-        <div class="net-canvas-wrap">
-          <p class="swipe-hint">← Swipe to follow the panels upstream</p>
-          <div class="net-canvas" id="netCanvas"></div>
-          <div class="net-legend" aria-hidden="true">
-            <span><svg viewBox="0 0 40 10"><line class="lg-verified" x1="0" y1="5" x2="40" y2="5"/></svg>Verified</span>
-            <span><svg viewBox="0 0 40 10"><line class="lg-suspected" x1="0" y1="5" x2="40" y2="5"/></svg>Suspected</span>
-            <span><svg viewBox="0 0 40 10"><line class="lg-missing" x1="0" y1="5" x2="40" y2="5"/></svg>Missing</span>
-            <span><svg viewBox="0 0 40 10"><line class="lg-trade" x1="0" y1="5" x2="32" y2="5"/><path d="M32 1l7 4-7 4z" fill="var(--ink-soft)"/></svg>Goods flow</span>
-            <span><svg viewBox="0 0 40 10"><line class="lg-own" x1="0" y1="5" x2="32" y2="5"/><rect x="31" y="1.5" width="7" height="7" transform="rotate(45 34.5 5)" fill="var(--ink-soft)"/></svg>Owns</span>
-            <span><i class="xuar-swatch"></i>XUAR region</span>
-          </div>
-        </div>
-        <aside class="detail" id="detailPanel" aria-live="polite"></aside>
-      </div>
-    </section>
-
-    <!-- ============ 03 · FINDINGS ============ -->
-    <section class="view" id="view-findings" data-view="findings" aria-labelledby="h-findings" hidden>
-      <header class="view-head">
-        <div>
-          <p class="kicker">Findings · <span class="sample-tag">Sample</span></p>
-          <h1 id="h-findings">What we know, what we suspect, what's missing</h1>
-          <p class="section-lede">Each finding separates its evidence into the three categories. Record links to Sayari and Tradeverifyd are sample placeholders. Links marked <span class="prov prov-tavily">Tavily</span> open real public documents.</p>
-        </div>
-      </header>
-
-      <div class="tally" id="tally"></div>
-
-      <div class="finding-filters" role="group" aria-label="Filter findings by headline status" id="findingFilters">
-        <button type="button" class="chip is-on" data-ffilter="all">All findings</button>
-        <button type="button" class="chip chip-verified" data-ffilter="verified">Verified</button>
-        <button type="button" class="chip chip-suspected" data-ffilter="suspected">Suspected</button>
-        <button type="button" class="chip chip-missing" data-ffilter="missing">Missing</button>
-      </div>
-
-      <div class="findings" id="findingsList"></div>
-
-      <aside class="next-steps">
-        <h2>From sample to live</h2>
-        <p>Connect the Sayari and Tradeverifyd MCP servers and SolarTrace replaces the sample records with real entity profiles, shipment sets and annotations. The evidence labels follow the same rules: if it has a record, it is verified; if it rests on indicators, it is suspected; if we can't find it, we say so.</p>
-      </aside>
-    </section>
-  </main>
-
-  <footer class="colophon">
-    <p><strong>SolarTrace</strong> · Hackathon prototype, November 2026. The companies and records shown are fictional samples. Nothing here is an allegation about any real company. Sector context links to public sources found through Tavily.</p>
+  <footer class="colophon" id="colophon">
+    <div>
+      <strong>SolarTrace</strong> · Hackathon investigation, November 2026.
+      <span id="footerProvenance"></span>
+    </div>
+    <p class="disclaimer">SolarTrace shows what records and public sources say about supply-chain links. A "suspected" or "missing" label is not a finding that any company uses forced labour. It marks where evidence is incomplete. Corrections are welcome.</p>
   </footer>
 
-  <!-- Demo presenter bar -->
+  <!-- presenter -->
   <div class="demo-bar" id="demoBar" hidden role="region" aria-label="Demo presenter">
     <div class="demo-clock"><span id="demoTime">3:00</span><div class="demo-progress"><i id="demoProgress"></i></div></div>
-    <div class="demo-step">
-      <span class="demo-count" id="demoCount">1 / 6</span>
-      <p id="demoText"></p>
-    </div>
+    <div class="demo-step"><span class="demo-count" id="demoCount"></span><p id="demoText"></p></div>
     <div class="demo-ctrls">
       <button type="button" id="demoPrev" aria-label="Previous step">←</button>
-      <button type="button" id="demoNext" aria-label="Next step" class="primary">Next →</button>
+      <button type="button" id="demoNext" class="primary">Next →</button>
       <button type="button" id="demoClose" aria-label="Exit demo">✕</button>
     </div>
   </div>
 
   <div class="tooltip" id="tooltip" role="tooltip" hidden></div>
 
-  <script src="js/data.sample.js"></script>
-  <script src="js/app.js"></script>
+  <script src="data/case.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/pages/home.js"></script>
+  <script src="js/pages/globe.js"></script>
+  <script src="js/pages/network.js"></script>
+  <script src="js/pages/companies.js"></script>
+  <script src="js/pages/findings.js"></script>
+  <script src="js/pages/timeline.js"></script>
+  <script src="js/pages/method.js"></script>
+  <script src="js/pages/sources.js"></script>
+  <script src="js/demo.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

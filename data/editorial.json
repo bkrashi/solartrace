@@ -1,0 +1,515 @@
+{
+  "meta": {
+    "title": "From Xinjiang polysilicon to US solar imports: the Trina Solar chain",
+    "caseShort": "Trina Solar → Xinjiang GCL",
+    "heroLede": "We followed solar modules imported by Trina Solar's US companies back through factories in Vietnam, Thailand and China to a polysilicon plant in Xinjiang that is on the US government's forced-labour Entity List. Shipment records prove some links. Others rest on indicators. One trail runs cold.",
+    "storyTitle": "From a Texas factory gate to the Xinjiang desert",
+    "storyIntro": "Scroll to walk the chain backwards, one tier at a time. Each step says which records support it and how sure we can be.",
+    "path": [
+      "trina-us",
+      "trina-cn",
+      "tcl-zhonghuan",
+      "xj-gcl",
+      "hoshine"
+    ],
+    "spotlight": "xj-gcl",
+    "retrieved": "2026-11-19"
+  },
+  "drop_entities": [
+    "trina-owner-gao"
+  ],
+  "drop_relationships": [
+    "r11",
+    "r16"
+  ],
+  "geo": {
+    "trina-us": [
+      37.548,
+      -121.988,
+      true
+    ],
+    "trina-us-mfg": [
+      32.589,
+      -96.685,
+      true
+    ],
+    "trina-vn": [
+      21.41,
+      105.87,
+      true
+    ],
+    "trina-th": [
+      12.98,
+      101.21,
+      true
+    ],
+    "trina-cn": [
+      31.81,
+      119.97,
+      true
+    ],
+    "tcl-zhonghuan": [
+      39.08,
+      117.13,
+      true
+    ],
+    "xj-gcl": [
+      44.6,
+      89.9,
+      true
+    ],
+    "jiangsu-zhongneng": [
+      33.0,
+      119.5,
+      true
+    ],
+    "gaojia-hk": [
+      22.32,
+      114.17,
+      true
+    ],
+    "gcl-solar-power-hk": [
+      22.32,
+      114.17,
+      true
+    ],
+    "hoshine": [
+      42.87,
+      90.21,
+      true
+    ],
+    "trina-vn-wafer": [
+      21.03,
+      105.85,
+      true
+    ],
+    "wacker": [
+      51.0,
+      10.4,
+      true
+    ]
+  },
+  "entity_overrides": {
+    "trina-vn-wafer": {
+      "role": "Trina wafer plant in Vietnam (city not returned; shown at country level). Its Tradeverifyd polysilicon suppliers are outside Xinjiang: Germany, US, Malaysia, Inner Mongolia and Henan. Shown for contrast."
+    },
+    "wacker": {
+      "role": "Non-Xinjiang polysilicon supplier (HS 2804.61) to Trina Solar (Vietnam) Wafer in Tradeverifyd (city not returned; shown at country level). Shown for contrast."
+    },
+    "xj-gcl": {
+      "flags": [
+        {
+          "label": "UFLPA Entity List",
+          "detail": "Listed by DHS on 21 June 2022 under the 'made with forced labor' sub-list. Renamed 'Xinjiang Goens Energy Technology' in the 3 Aug 2026 update, which is the date Tradeverifyd records for the current listing.",
+          "source_ids": [
+            "tv-ann-gcl-uflpa",
+            "T-fr-2022-entity-list",
+            "T-fr-2026-entity-list"
+          ]
+        },
+        {
+          "label": "BIS Entity List",
+          "detail": "Added to the Commerce Department's export-control Entity List in June 2021. Tradeverifyd records it as valid from 2021-06-24.",
+          "source_ids": [
+            "tv-ann-gcl-bis",
+            "T-commerce-bis-2021"
+          ]
+        },
+        {
+          "label": "XUAR location",
+          "detail": "Sayari risk factors for Xinjiang geospatial location, registration, operations and name.",
+          "source_ids": [
+            "say-xj-gcl"
+          ]
+        },
+        {
+          "label": "Law enforcement action (historic)",
+          "detail": "Sayari risk factors law_enforcement_action and law_enforcement_action_historic (adverse media).",
+          "source_ids": [
+            "say-xj-gcl"
+          ]
+        },
+        {
+          "label": "Tradeverifyd Score 256 (High)",
+          "detail": "Tradeverifyd Score 256, level High.",
+          "source_ids": [
+            "tv-score-gcl"
+          ]
+        }
+      ],
+      "name": "Xinjiang GCL New Energy Material Technology Co., Ltd.",
+      "alias": "Xinjiang Goens Energy Technology Co., Ltd. (新疆戈恩斯能源科技有限公司)"
+    }
+  },
+  "extra_flags": {
+    "hoshine": [
+      {
+        "label": "CBP Withhold Release Order (2021)",
+        "detail": "CBP issued a WRO on Hoshine's silica-based products, and goods such as polysilicon made from them, on 24 June 2021.",
+        "source_ids": [
+          "T-cbp-wro-hoshine"
+        ]
+      }
+    ]
+  },
+  "extra_sources": {
+    "xj-gcl": [
+      "T-fr-2022-entity-list",
+      "T-dhs-entity-list"
+    ],
+    "hoshine": [
+      "T-cbp-wro-hoshine",
+      "T-fr-2022-entity-list"
+    ]
+  },
+  "featured_facts": [
+    "xinjiang-poly-share-2020",
+    "china-poly-share-2024",
+    "all-four-poly-makers",
+    "uflpa-stopped-total",
+    "solar-share-stopped",
+    "entity-list-2026-expansion"
+  ],
+  "story": [
+    {
+      "kicker": "Start · US importer",
+      "stage": "importer",
+      "status": "verified",
+      "title": "A pallet of panels arrives for a factory in Texas",
+      "body": "Vietnamese customs records show monocrystalline solar modules shipped from Hanoi to Los Angeles on 17 September 2024, consigned to Trina Solar's US module plant in Wilmer, Texas. Sayari's supply-chain trace also shows Trina Solar (U.S.) receiving HS 8541 solar goods from 2021 to 2024.",
+      "focus": [
+        "trina-us-mfg",
+        "trina-us"
+      ],
+      "source_ids": [
+        "say-ship-vn-us",
+        "say-upstream-trina-us"
+      ]
+    },
+    {
+      "kicker": "Tier 1 · Module plants",
+      "stage": "module",
+      "status": "verified",
+      "title": "Built in Vietnam and Thailand",
+      "body": "The modules came from Trina factories in Thai Nguyen, Vietnam and Rayong, Thailand. Southeast Asia matters here: Malaysia, Vietnam and Thailand are the top origins by value of shipments US Customs has stopped under the forced-labour law.",
+      "focus": [
+        "trina-vn",
+        "trina-th"
+      ],
+      "source_ids": [
+        "say-upstream-trina-us",
+        "T-cbp-dashboard-guide"
+      ]
+    },
+    {
+      "kicker": "Tier 2 · Group parent",
+      "stage": "cell",
+      "status": "verified",
+      "title": "Back to Changzhou",
+      "body": "Trina Solar Co., Ltd., the Chinese parent, is named as shipper on some US-bound solar shipments between Sept 2023 and Feb 2024. Tradeverifyd annotates it with a human-rights risk flag citing Sheffield Hallam research. Sayari flags it as possibly owning a Xinjiang-based entity, though which entity was not identified.",
+      "focus": [
+        "trina-cn"
+      ],
+      "source_ids": [
+        "say-upstream-trina-us",
+        "tv-ann-trina-hr",
+        "say-trina-cn"
+      ]
+    },
+    {
+      "kicker": "Tier 3 · Wafers",
+      "stage": "wafer",
+      "status": "suspected",
+      "title": "The trail turns amber",
+      "body": "Tradeverifyd records Trina Solar Co. as a trade customer of TCL Zhonghuan, a wafer maker in Tianjin. This is a recorded trade relationship, but no shipment-level records, volumes or dates came back, so the link is suspected, not verified.",
+      "focus": [
+        "tcl-zhonghuan"
+      ],
+      "source_ids": [
+        "tv-tcl-out"
+      ]
+    },
+    {
+      "kicker": "Tier 4 · Polysilicon",
+      "stage": "polysilicon",
+      "status": "suspected",
+      "title": "Into Xinjiang",
+      "body": "Tradeverifyd lists TCL Zhonghuan as the only outbound trade relationship of Xinjiang GCL, a polysilicon producer in Changji, Xinjiang. Xinjiang GCL has been on the UFLPA Entity List since June 2022. Under the law, goods made wholly or partly by a listed entity are presumed to be made with forced labour and are barred from US import unless the importer proves otherwise.",
+      "focus": [
+        "xj-gcl"
+      ],
+      "source_ids": [
+        "tv-gcl-out",
+        "T-fr-2022-entity-list",
+        "T-cbp-uflpa-stats"
+      ]
+    },
+    {
+      "kicker": "Ownership",
+      "stage": "holding",
+      "status": "verified",
+      "title": "Who owns the polysilicon plant?",
+      "body": "Registry data in Sayari shows Xinjiang GCL's shareholder is Jiangsu Zhongneng. Above that sit two Hong Kong companies in the GCL group. No ownership percentages were returned. Tradeverifyd also names GCL-Poly as the parent, but only from a non-registry source.",
+      "focus": [
+        "jiangsu-zhongneng",
+        "gaojia-hk",
+        "gcl-solar-power-hk"
+      ],
+      "source_ids": [
+        "say-bo-xj-gcl",
+        "tv-gcl-aff"
+      ]
+    },
+    {
+      "kicker": "Tier 5 · Silicon metal",
+      "stage": "silicon",
+      "status": "missing",
+      "title": "Where the trail runs cold",
+      "body": "Hoshine, a silicon-metal giant in Shanshan, Xinjiang, is on the UFLPA Entity List and was hit with a US detention order in 2021. But we found no record of it supplying Xinjiang GCL. The only path between them in Sayari runs through a state-owned construction contractor, which is not a supply relationship. We show this gap rather than fill it.",
+      "focus": [
+        "hoshine"
+      ],
+      "source_ids": [
+        "say-path-hoshine-gcl",
+        "T-cbp-wro-hoshine"
+      ]
+    },
+    {
+      "kicker": "Contrast",
+      "stage": "wafer",
+      "status": "suspected",
+      "title": "A cleaner route is on record, too",
+      "body": "Trina's own wafer plant in Vietnam lists polysilicon suppliers outside Xinjiang, including Wacker in Germany and Hemlock in the US. But no record shows those wafers reaching the Vietnam module plant that ships to Texas. Clean inputs only help if you can trace them into the product.",
+      "focus": [
+        "trina-vn-wafer",
+        "wacker"
+      ],
+      "source_ids": [
+        "tv-vnwafer-in",
+        "tv-paths-qcells"
+      ]
+    },
+    {
+      "kicker": "Verdict",
+      "stage": null,
+      "status": "suspected",
+      "title": "Exposed, not proven",
+      "body": "The import end of the chain is documented. The China end rests on trade-relationship indicators that point to a UFLPA-listed Xinjiang polysilicon maker. That is serious exposure under US law, but the records cannot show that any specific panel contains Xinjiang polysilicon. Closing that gap takes shipment-level tracing.",
+      "focus": [
+        "trina-us",
+        "xj-gcl"
+      ],
+      "source_ids": []
+    }
+  ],
+  "findings": [
+    {
+      "id": "F1",
+      "status": "suspected",
+      "severity": "high",
+      "title": "Trina Solar's US imports have a recorded trade route back to a UFLPA-listed Xinjiang polysilicon maker",
+      "summary": "Shipment records document the import end of the chain. Upstream in China, Tradeverifyd records trade relationships from Trina's parent to TCL Zhonghuan, and from TCL Zhonghuan to Xinjiang GCL. These are indicators, not shipment proof.",
+      "verified": [
+        "HS 8541 solar shipments from Trina's Vietnam and Thailand plants to Trina Solar (U.S.), 2021–2024 (Sayari supply-chain trace)",
+        "Trina Solar Co., Ltd. named as shipper on HS 8541 goods to Trina Solar (U.S.), Sept 2023 – Feb 2024",
+        "Xinjiang GCL has been on the UFLPA Entity List since 21 June 2022"
+      ],
+      "suspected": [
+        "TCL Zhonghuan → Trina Solar Co.: recorded trade relationship with no shipment-level detail (Tradeverifyd)",
+        "Xinjiang GCL → TCL Zhonghuan: TCL Zhonghuan is Xinjiang GCL's only recorded outbound trade relationship (Tradeverifyd)"
+      ],
+      "missing": [
+        "Shipment-level records (dates, volumes) for either China-side link",
+        "Which wafers and cells went into the specific modules shipped to the US",
+        "A registry record linking Trina's parent to its Vietnam module plant"
+      ],
+      "why": "The UFLPA presumes goods made wholly or partly by a listed entity are made with forced labour. An importer can only rebut that with documentation tracing inputs back to source, which is the very data missing here.",
+      "focus": {
+        "entities": [
+          "trina-us",
+          "trina-cn",
+          "tcl-zhonghuan",
+          "xj-gcl"
+        ],
+        "path": true
+      },
+      "source_ids": [
+        "say-upstream-trina-us",
+        "tv-tcl-out",
+        "tv-gcl-out",
+        "tv-ann-gcl-uflpa",
+        "T-fr-2022-entity-list",
+        "T-cbp-uflpa-stats"
+      ]
+    },
+    {
+      "id": "F2",
+      "status": "verified",
+      "severity": "high",
+      "title": "The polysilicon maker is on two US government lists and sits inside Xinjiang",
+      "summary": "Xinjiang GCL New Energy Material Technology (now listed as Xinjiang Goens Energy Technology) is on both the UFLPA Entity List and the Commerce Department's Entity List. Its registry ownership runs through the GCL group.",
+      "verified": [
+        "UFLPA Entity List since 21 June 2022, renamed in the 3 Aug 2026 update",
+        "Commerce (BIS) Entity List since June 2021",
+        "Sayari location, registration and operations risk factors place it in the Xinjiang Uyghur Autonomous Region",
+        "Shareholder: Jiangsu Zhongneng, owned in turn by two GCL-group Hong Kong companies (Sayari registry data)"
+      ],
+      "suspected": [
+        "GCL-Poly Energy Holdings as group parent (Tradeverifyd legacy data, not a registry record)"
+      ],
+      "missing": [
+        "Ownership percentages at every level",
+        "A third shareholder Sayari returned for Jiangsu Zhongneng, not modelled here"
+      ],
+      "why": "Sheffield Hallam's research linked all four Xinjiang polysilicon makers, GCL among them, to state labour-transfer programmes.",
+      "focus": {
+        "entities": [
+          "xj-gcl",
+          "jiangsu-zhongneng",
+          "gaojia-hk",
+          "gcl-solar-power-hk",
+          "gcl-poly"
+        ]
+      },
+      "source_ids": [
+        "tv-ann-gcl-uflpa",
+        "tv-ann-gcl-bis",
+        "say-xj-gcl",
+        "say-bo-xj-gcl",
+        "tv-gcl-aff",
+        "T-fr-2022-entity-list",
+        "T-fr-2026-entity-list",
+        "T-commerce-bis-2021",
+        "T-shu-broad-daylight"
+      ]
+    },
+    {
+      "id": "F3",
+      "status": "missing",
+      "severity": "high",
+      "title": "Inside China, the chain goes dark",
+      "summary": "The links that matter most, wafers and polysilicon moving between Chinese companies, have no shipment-level records in either dataset. The trade relationships also carry HS 8541 (cells and modules) rather than 2804.61 (polysilicon), which suggests aggregated or mis-coded data.",
+      "verified": [
+        "Two Vietnam customs records (17 Sept 2024) of modules consigned to Trina's Wilmer, TX plant, declared at about US$741 and US$630 (likely samples)"
+      ],
+      "suspected": [
+        "China-side trade relationships recorded at company level only"
+      ],
+      "missing": [
+        "Shipment records for TCL Zhonghuan → Trina Solar Co.",
+        "Shipment records for Xinjiang GCL → TCL Zhonghuan",
+        "The wafer and cell source of the Vietnam module plant",
+        "Shipment counts for the US-bound legs (Sayari reported 6,441 rows for one query, but only 2 were retrieved)"
+      ],
+      "why": "Domestic Chinese trade rarely appears in customs data, which is exactly why the UFLPA puts the burden of proof on the importer.",
+      "focus": {
+        "entities": [
+          "tcl-zhonghuan",
+          "trina-vn",
+          "xj-gcl"
+        ]
+      },
+      "source_ids": [
+        "say-ship-vn-us",
+        "tv-tcl-out",
+        "tv-gcl-out"
+      ]
+    },
+    {
+      "id": "F4",
+      "status": "suspected",
+      "severity": "medium",
+      "title": "Trina's parent carries several independent risk flags",
+      "summary": "Both datasets flag Trina Solar Co., Ltd. These flags describe risk signals about the company. They do not establish what is inside any particular product.",
+      "verified": [
+        "Tradeverifyd annotation: DoD Section 1260H list of Chinese military companies (valid from 8 June 2026)",
+        "Tradeverifyd annotation: human-rights violation risk, citing Sheffield Hallam 'In Broad Daylight' research",
+        "Tradeverifyd Score 266 (High)"
+      ],
+      "suspected": [
+        "Sayari: possibly owns a Xinjiang-based entity within three ownership hops (the entity was not identified)",
+        "Sayari: Thailand plant possibly owned by a Section 1260H entity (inferred path)"
+      ],
+      "missing": [
+        "Identity of the Xinjiang-based entity Sayari's flag refers to",
+        "Registry ownership of the Vietnam and Thailand plants"
+      ],
+      "why": "The 1260H list concerns links to China's military, not forced labour. It's shown because it affects US procurement risk, not as forced-labour evidence.",
+      "focus": {
+        "entities": [
+          "trina-cn",
+          "trina-th"
+        ]
+      },
+      "source_ids": [
+        "tv-ann-trina-1260h",
+        "tv-ann-trina-hr",
+        "tv-score-trina",
+        "say-trina-cn",
+        "say-trina-th"
+      ]
+    },
+    {
+      "id": "F5",
+      "status": "missing",
+      "severity": "medium",
+      "title": "Hoshine: listed and detained, but not linked",
+      "summary": "Hoshine, the Xinjiang silicon-metal producer at the centre of the 2021 detention order, is the obvious next upstream suspect. We found no record tying it to this chain.",
+      "verified": [
+        "CBP Withhold Release Order on Hoshine silica-based products, 24 June 2021",
+        "UFLPA Entity List since 21 June 2022"
+      ],
+      "suspected": [],
+      "missing": [
+        "Any trade record of Hoshine supplying Xinjiang GCL",
+        "Sayari's only path between them runs through a state-owned construction contractor, which is not a supply link"
+      ],
+      "why": "We show what we looked for and didn't find. Filling the gap with an assumption would make the investigation less trustworthy, not more.",
+      "focus": {
+        "entities": [
+          "hoshine",
+          "xj-gcl"
+        ]
+      },
+      "source_ids": [
+        "tv-ann-hoshine-uflpa",
+        "say-path-hoshine-gcl",
+        "tv-hoshine-out",
+        "T-cbp-wro-hoshine"
+      ]
+    },
+    {
+      "id": "F6",
+      "status": "suspected",
+      "severity": "low",
+      "title": "A non-Xinjiang polysilicon route exists in the same group",
+      "summary": "Trina's Vietnam wafer plant lists polysilicon suppliers in Germany, the US, Malaysia and other parts of China. None are in Xinjiang.",
+      "verified": [],
+      "suspected": [
+        "Wacker, Hemlock, OCI and other HS 2804.61 suppliers to Trina Solar (Vietnam) Wafer (Tradeverifyd trade relationships)"
+      ],
+      "missing": [
+        "Whether those wafers reach the Vietnam module plant that ships to the US. Tradeverifyd links the wafer plant to Hanwha Q Cells Malaysia instead"
+      ],
+      "why": "Traceability standards such as SEIA's and the Solar Stewardship Initiative's exist to prove which route a given panel took.",
+      "focus": {
+        "entities": [
+          "trina-vn-wafer",
+          "wacker",
+          "trina-vn"
+        ]
+      },
+      "source_ids": [
+        "tv-vnwafer-in",
+        "tv-paths-qcells",
+        "T-seia-std101",
+        "T-ssi-traceability"
+      ]
+    }
+  ],
+  "extra_gaps": [
+    "Individual shareholders of Trina Solar Co., Ltd. returned by Sayari are not shown on this site.",
+    "Tradeverifyd returned an affiliate link between Maxeon and TCL Zhonghuan whose direction could not be confirmed, so it is omitted."
+  ],
+  "notes": "Neither Sayari nor Tradeverifyd returned coordinates. Map positions are approximate, at city level, or at country level where only a country was given. Maxeon and GCL-Poly had no location and are not on the globe."
+}

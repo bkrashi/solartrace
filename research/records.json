@@ -1,0 +1,1080 @@
+{
+ "case": {
+  "title": "From Xinjiang polysilicon to US solar imports: the Trina Solar chain",
+  "importer": "TRINA SOLAR (U.S) INC (plus TRINA SOLAR US MANUFACTURING MODULE 1.LLC, Wilmer TX)",
+  "summary": "Shipment records show Trina Solar's factories in Vietnam and Thailand sending solar modules (HS 8541/854143) to Trina Solar's US companies between 2021 and 2024. Upstream, Tradeverifyd records a trade link from Trina Solar's Chinese parent back to the wafer maker Tianjin Zhonghuan (TCL Zhonghuan), and from Zhonghuan back to Xinjiang GCL New Energy Material Technology, a polysilicon producer in Xinjiang that is on the UFLPA Entity List. The import legs are backed by shipment records; the China-side wafer and polysilicon links are trade-relationship indicators without shipment-level detail, and no record links the Xinjiang silicon-metal producer Hoshine to this chain.",
+  "retrieved": "2026-11-19"
+ },
+ "entities": [
+  {
+   "id": "trina-us",
+   "name": "TRINA SOLAR (U.S) INC",
+   "short": "Trina Solar (U.S.)",
+   "country": "United States",
+   "city": "Fremont",
+   "province": "California",
+   "lat": null,
+   "lon": null,
+   "stage": "importer",
+   "role": "US importer of record receiving solar modules (HS 8541) from Trina factories in Vietnam and Thailand.",
+   "status": "verified",
+   "sayari_id": "VFQiRsFsEiIT7DZACT9DKg",
+   "tradeverifyd_id": "a34359d7-039c-451d-bccf-f8fd6ac7e0a9",
+   "flags": [
+    {
+     "label": "Sheffield Hallam forced-labour report entity (adjacent)",
+     "detail": "Sayari risk factor sheffield_hallam_university_forced_labor_reports_entity_adjacent: one hop from an entity named in Sheffield Hallam University forced-labour reports.",
+     "source_ids": [
+      "say-trina-us"
+     ]
+    },
+    {
+     "label": "Registry status inactive",
+     "detail": "Sayari profile shows status 'inactive' (registration date 2009-09-23); trade records run to 2024-08.",
+     "source_ids": [
+      "say-trina-us"
+     ]
+    }
+   ],
+   "source_ids": [
+    "say-trina-us",
+    "tv-trina-us"
+   ]
+  },
+  {
+   "id": "trina-us-mfg",
+   "name": "TRINA SOLAR US MANUFACTURING MODULE 1.LLC",
+   "short": "Trina Solar US Manufacturing (Wilmer, TX)",
+   "country": "United States",
+   "city": "Wilmer",
+   "province": "Texas",
+   "lat": null,
+   "lon": null,
+   "stage": "importer",
+   "role": "US consignee (1200 North Sunrise Road, Wilmer, TX) receiving solar modules shipped from Trina's Vietnam plant in September 2024.",
+   "status": "verified",
+   "sayari_id": "fNaySXclciv0ye3-Gnt6nw",
+   "tradeverifyd_id": null,
+   "flags": [
+    {
+     "label": "Imports goods on ILAB lists (possible match)",
+     "detail": "Sayari risk factors psa_imports_ilab_child_labor and psa_imports_ilab_forced_labor (path may include 'possibly the same as' links).",
+     "source_ids": [
+      "say-ship-vn-us"
+     ]
+    }
+   ],
+   "source_ids": [
+    "say-ship-vn-us",
+    "say-trina-us-mfg"
+   ]
+  },
+  {
+   "id": "trina-vn",
+   "name": "TRINA SOLAR ENERGY DEVELOPMENT COMPANY LIMITED (CÔNG TY TNHH PHÁT TRIỂN NĂNG LƯỢNG TRINA SOLAR)",
+   "short": "Trina Solar Vietnam",
+   "country": "Vietnam",
+   "city": "Pho Yen",
+   "province": "Thai Nguyen",
+   "lat": null,
+   "lon": null,
+   "stage": "module",
+   "role": "Module factory at Lot CN-14, Yen Binh Industrial Zone that exports bifacial monocrystalline solar modules to Trina's US companies.",
+   "status": "verified",
+   "sayari_id": "gqaw5UdgXpRF1NLuBqMUBg",
+   "tradeverifyd_id": null,
+   "flags": [
+    {
+     "label": "Sheffield Hallam forced-labour report: direct origin",
+     "detail": "Sayari risk factor forced_labor_sheffield_hallam_university_reports_origin_direct.",
+     "source_ids": [
+      "say-trina-vn"
+     ]
+    },
+    {
+     "label": "Imports from NDAA Section 1260H entity",
+     "detail": "Sayari risk factor imports_from_usa_section_1260h_entity.",
+     "source_ids": [
+      "say-trina-vn"
+     ]
+    },
+    {
+     "label": "Exports goods on ILAB forced/child labour list",
+     "detail": "Sayari risk factors exports_ilab_forced_labor, exports_ilab_child_labor.",
+     "source_ids": [
+      "say-trina-vn"
+     ]
+    }
+   ],
+   "source_ids": [
+    "say-trina-vn",
+    "say-ship-vn-us",
+    "say-upstream-trina-us"
+   ]
+  },
+  {
+   "id": "trina-th",
+   "name": "TRINA SOLAR SCIENCE & TECHNOLOGY (THAILAND) LTD.",
+   "short": "Trina Solar Thailand",
+   "country": "Thailand",
+   "city": "Pluak Daeng",
+   "province": "Rayong",
+   "lat": null,
+   "lon": null,
+   "stage": "module",
+   "role": "Factory at 7/496 Moo 6, Tambol Mabyangporn, Rayong that shipped solar modules (HS 8541) to Trina Solar (U.S.) in 2023-2024.",
+   "status": "verified",
+   "sayari_id": "aEwbrgl9ykZYE_reEkjAwQ",
+   "tradeverifyd_id": null,
+   "flags": [
+    {
+     "label": "Possibly owned by NDAA Section 1260H entity",
+     "detail": "Sayari risk factor psa_owned_by_usa_section_1260h_entity (ownership path may include 'possibly the same as' links).",
+     "source_ids": [
+      "say-trina-th"
+     ]
+    },
+    {
+     "label": "Sheffield Hallam forced-labour report: sub-tier origin",
+     "detail": "Sayari risk factors forced_labor_sheffield_hallam_university_reports_origin_subtier and psa_owned_by_sheffield_hallam_university_reports_forced_labor_entity.",
+     "source_ids": [
+      "say-trina-th"
+     ]
+    }
+   ],
+   "source_ids": [
+    "say-trina-th",
+    "say-upstream-trina-us"
+   ]
+  },
+  {
+   "id": "trina-cn",
+   "name": "Trina Solar Co., Ltd. (天合光能股份有限公司)",
+   "short": "Trina Solar (China parent)",
+   "country": "China",
+   "city": "Changzhou",
+   "province": "Jiangsu",
+   "lat": null,
+   "lon": null,
+   "stage": "cell",
+   "role": "Chinese cell and module manufacturer and group parent; listed as shipper on some module shipments to Trina Solar (U.S.) and as a buyer of wafers from TCL Zhonghuan.",
+   "status": "verified",
+   "sayari_id": "_DcWgs6VXAh5t4G5S6X_mQ",
+   "tradeverifyd_id": "50e91bc4-ad5e-4f01-a0e8-d06b7b08eb57",
+   "flags": [
+    {
+     "label": "NDAA Section 1260H list (Chinese military companies)",
+     "detail": "Tradeverifyd annotation 'Section 1260H List of Chinese Military Companies' (Department of Defense), valid from 2026-06-08, no end date. Sayari also flags usa_section_1260h.",
+     "source_ids": [
+      "tv-ann-trina-1260h",
+      "say-trina-cn"
+     ]
+    },
+    {
+     "label": "Sheffield Hallam forced-labour research",
+     "detail": "Tradeverifyd annotation 'Human Rights Violation Risk' citing Sheffield Hallam 'In Broad Daylight' research (valid from 2023-05-09); Sayari flags sheffield_hallam_university_forced_labor_entity.",
+     "source_ids": [
+      "tv-ann-trina-hr",
+      "say-trina-cn"
+     ]
+    },
+    {
+     "label": "Owner of Xinjiang-based entity",
+     "detail": "Sayari risk factor owner_of_forced_labor_xinjiang_entity: possibly owns a Xinjiang-based entity up to 3 ownership hops away (the specific entity was not retrieved).",
+     "source_ids": [
+      "say-trina-cn"
+     ]
+    },
+    {
+     "label": "Regulatory action",
+     "detail": "Sayari risk factor regulatory_action.",
+     "source_ids": [
+      "say-trina-cn"
+     ]
+    },
+    {
+     "label": "Tradeverifyd Score 266 (High)",
+     "detail": "Tradeverifyd Score 266, level High, score version 1.0.0.",
+     "source_ids": [
+      "tv-score-trina"
+     ]
+    }
+   ],
+   "source_ids": [
+    "say-trina-cn",
+    "tv-trina-cn",
+    "tv-score-trina"
+   ]
+  },
+  {
+   "id": "tcl-zhonghuan",
+   "name": "天津中环半导体股份有限公司 (Tianjin Zhonghuan Semiconductor Co., Ltd.)",
+   "short": "TCL Zhonghuan (wafers)",
+   "country": "China",
+   "city": "Xiqing District, Tianjin",
+   "province": "Tianjin",
+   "lat": null,
+   "lon": null,
+   "stage": "wafer",
+   "role": "Wafer maker (HQ: No. 12 Haitai East Road, Huayuan Industrial Zone, Tianjin) recorded by Tradeverifyd as buying from Xinjiang GCL and supplying Trina Solar, Maxeon and SunPower.",
+   "status": "suspected",
+   "sayari_id": null,
+   "tradeverifyd_id": "d1367341-a2a2-4471-98bd-676161e95367",
+   "flags": [
+    {
+     "label": "Tradeverifyd Score 726 (Low)",
+     "detail": "Tradeverifyd Score 726, level Low, score version 1.0.0. No annotations were checked for this entity.",
+     "source_ids": [
+      "tv-score-tcl"
+     ]
+    }
+   ],
+   "source_ids": [
+    "tv-tcl",
+    "tv-tcl-out",
+    "tv-tcl-addr",
+    "tv-score-tcl"
+   ]
+  },
+  {
+   "id": "maxeon",
+   "name": "MAXEON SOLAR TECHNOLOGIES, LTD.",
+   "short": "Maxeon",
+   "country": null,
+   "city": null,
+   "province": null,
+   "lat": null,
+   "lon": null,
+   "stage": "module",
+   "role": "Module maker recorded by Tradeverifyd as a wafer customer of TCL Zhonghuan and as having a corporate-registry affiliate link to it (branch).",
+   "status": "suspected",
+   "sayari_id": null,
+   "tradeverifyd_id": "fbe85778-ad7e-4132-8d5b-6e7b6e9fe303",
+   "flags": [],
+   "source_ids": [
+    "tv-tcl-out",
+    "tv-tcl-aff",
+    "tv-maxeon-out",
+    "say-maxeon-us"
+   ]
+  },
+  {
+   "id": "xj-gcl",
+   "name": "Xinjiang GCL New Energy Material Technology, Co. Ltd. (Sayari record: 新疆戈恩斯能源科技有限公司 / Xinjiang Goens Energy Technology)",
+   "short": "Xinjiang GCL (polysilicon)",
+   "country": "China",
+   "city": "Changji (Zhundong Economic and Technological Development Zone)",
+   "province": "Xinjiang Uyghur Autonomous Region",
+   "lat": null,
+   "lon": null,
+   "stage": "polysilicon",
+   "role": "Polysilicon producer in North Hongshaquan Industrial Park, Zhundong, Changji, Xinjiang; recorded by Tradeverifyd as supplying TCL Zhonghuan.",
+   "status": "verified",
+   "sayari_id": "6lCDv7UUvcLpiTclPhUzmg",
+   "tradeverifyd_id": "2dc6fe71-ba43-4e29-965e-e0b0f85f83d2",
+   "flags": [
+    {
+     "label": "UFLPA Entity List",
+     "detail": "Tradeverifyd annotation 'Uyghur Forced Labor Prevention Act (Public Law No. 117-78)', DHS Section 2(d)(2)(B)(i) list, valid_from 2026-08-03 as returned. Sayari also flags forced_labor_xinjiang_uflpa.",
+     "source_ids": [
+      "tv-ann-gcl-uflpa",
+      "say-xj-gcl"
+     ]
+    },
+    {
+     "label": "BIS Entity List",
+     "detail": "Tradeverifyd annotations 'BIS Entity List (EL)' and 'Entity List (EL) - Bureau of Industry and Security', valid from 2021-06-24; Sayari flags usa_bis and export_controls.",
+     "source_ids": [
+      "tv-ann-gcl-bis",
+      "say-xj-gcl"
+     ]
+    },
+    {
+     "label": "XUAR location",
+     "detail": "Sayari risk factors forced_labor_xinjiang_geospatial, forced_labor_xinjiang_registration, forced_labor_xinjiang_operations, forced_labor_xinjiang_name.",
+     "source_ids": [
+      "say-xj-gcl"
+     ]
+    },
+    {
+     "label": "Law enforcement action (historic)",
+     "detail": "Sayari risk factors law_enforcement_action and law_enforcement_action_historic (adverse media).",
+     "source_ids": [
+      "say-xj-gcl"
+     ]
+    },
+    {
+     "label": "Tradeverifyd Score 256 (High)",
+     "detail": "Tradeverifyd Score 256, level High, score version 1.0.0.",
+     "source_ids": [
+      "tv-score-gcl"
+     ]
+    }
+   ],
+   "source_ids": [
+    "tv-xj-gcl",
+    "say-xj-gcl",
+    "tv-gcl-addr",
+    "tv-ann-gcl-uflpa",
+    "tv-score-gcl"
+   ]
+  },
+  {
+   "id": "jiangsu-zhongneng",
+   "name": "江苏中能硅业科技发展有限公司 (Jiangsu Zhongneng Polysilicon Technology Development Co., Ltd.)",
+   "short": "Jiangsu Zhongneng (GCL)",
+   "country": "China",
+   "city": null,
+   "province": "Jiangsu",
+   "lat": null,
+   "lon": null,
+   "stage": "holding",
+   "role": "Registered shareholder of Xinjiang GCL in Sayari's ownership data (percentage not returned).",
+   "status": "verified",
+   "sayari_id": "bEbkWyJp1MNxTmDw7kByYQ",
+   "tradeverifyd_id": null,
+   "flags": [
+    {
+     "label": "Sheffield Hallam forced-labour report intermediary",
+     "detail": "Sayari risk factor sheffield_hallam_university_forced_labor_reports_intermediary_entity.",
+     "source_ids": [
+      "say-bo-xj-gcl"
+     ]
+    }
+   ],
+   "source_ids": [
+    "say-bo-xj-gcl"
+   ]
+  },
+  {
+   "id": "gaojia-hk",
+   "name": "高佳能源有限公司",
+   "short": "Gaojia Energy (Hong Kong)",
+   "country": "Hong Kong SAR, China",
+   "city": "Hong Kong (Kowloon)",
+   "province": null,
+   "lat": null,
+   "lon": null,
+   "stage": "owner",
+   "role": "Hong Kong-registered shareholder of Jiangsu Zhongneng (HK CR no. 1059020), two ownership hops above Xinjiang GCL.",
+   "status": "verified",
+   "sayari_id": "u6Xgy1m-eR--vFV1Cas7Jw",
+   "tradeverifyd_id": null,
+   "flags": [],
+   "source_ids": [
+    "say-bo-xj-gcl"
+   ]
+  },
+  {
+   "id": "gcl-solar-power-hk",
+   "name": "协鑫光伏电力科技控股有限公司",
+   "short": "GCL Solar Power Technology Holdings (HK)",
+   "country": "Hong Kong SAR, China",
+   "city": "Hong Kong (Kowloon)",
+   "province": null,
+   "lat": null,
+   "lon": null,
+   "stage": "owner",
+   "role": "Hong Kong-registered shareholder of Jiangsu Zhongneng (HK CR no. 1087124), two ownership hops above Xinjiang GCL.",
+   "status": "verified",
+   "sayari_id": "iL-yQJb5-mQUQK3h_Rrn3w",
+   "tradeverifyd_id": null,
+   "flags": [],
+   "source_ids": [
+    "say-bo-xj-gcl"
+   ]
+  },
+  {
+   "id": "gcl-poly",
+   "name": "GCL-Poly Energy Holdings Limited",
+   "short": "GCL-Poly (group parent)",
+   "country": null,
+   "city": null,
+   "province": null,
+   "lat": null,
+   "lon": null,
+   "stage": "holding",
+   "role": "Listed by Tradeverifyd as parent company of Xinjiang GCL (legacy data model, not a registry record).",
+   "status": "suspected",
+   "sayari_id": null,
+   "tradeverifyd_id": "328f2d8f-726c-4434-9640-b0391f463990",
+   "flags": [],
+   "source_ids": [
+    "tv-gcl-aff"
+   ]
+  },
+  {
+   "id": "hoshine",
+   "name": "Hoshine Silicon Industry (Shanshan) Co., Ltd. (合盛硅业（鄯善）有限公司)",
+   "short": "Hoshine (silicon metal)",
+   "country": "China",
+   "city": "Shanshan County, Turpan",
+   "province": "Xinjiang Uyghur Autonomous Region",
+   "lat": null,
+   "lon": null,
+   "stage": "silicon",
+   "role": "Silicon metal producer in Stone Industrial Park, Shanshan, Xinjiang; on the UFLPA Entity List. No record ties it to this chain.",
+   "status": "missing",
+   "sayari_id": "zx8g4oJszeZt7qfh5G1toA",
+   "tradeverifyd_id": "1133a4eb-db1d-4abd-85ed-617ccb8cd88e",
+   "flags": [
+    {
+     "label": "UFLPA Entity List",
+     "detail": "Tradeverifyd annotation 'Uyghur Forced Labor Prevention Act (Public Law No. 117-78)', DHS Section 2(d)(2)(B)(v) list, valid from 2022-06-21. Sayari flags forced_labor_xinjiang_uflpa.",
+     "source_ids": [
+      "tv-ann-hoshine-uflpa",
+      "say-hoshine"
+     ]
+    },
+    {
+     "label": "Linked to WRO entity",
+     "detail": "Sayari risk factors owned_by_wro_entity and wro_entity_adjacent: linked by ownership to an entity subject to a CBP Withhold Release Order.",
+     "source_ids": [
+      "say-hoshine"
+     ]
+    },
+    {
+     "label": "BIS Entity List",
+     "detail": "Tradeverifyd annotations 'Entity List (EL) - Bureau of Industry and Security' and 'BIS Entity List (EL)', valid from 2021-06-24.",
+     "source_ids": [
+      "tv-ann-hoshine-uflpa"
+     ]
+    },
+    {
+     "label": "Named in Uyghur Region research",
+     "detail": "Tradeverifyd annotation 'Companies Operating in the Uyghur Region' (Sheffield Hallam dataset via OpenSanctions); research list, not a government restriction.",
+     "source_ids": [
+      "tv-ann-hoshine-uflpa"
+     ]
+    },
+    {
+     "label": "XUAR location",
+     "detail": "Sayari risk factors forced_labor_xinjiang_geospatial, forced_labor_xinjiang_registration, forced_labor_xinjiang_operations.",
+     "source_ids": [
+      "say-hoshine"
+     ]
+    },
+    {
+     "label": "Law enforcement action (recent)",
+     "detail": "Sayari risk factors law_enforcement_action and law_enforcement_action_recent.",
+     "source_ids": [
+      "say-hoshine"
+     ]
+    }
+   ],
+   "source_ids": [
+    "say-hoshine",
+    "tv-hoshine",
+    "tv-ann-hoshine-uflpa"
+   ]
+  },
+  {
+   "id": "trina-vn-wafer",
+   "name": "TRINA SOLAR (VIETNAM) WAFER COMPANY LIMITED",
+   "short": "Trina Solar Vietnam Wafer",
+   "country": "Vietnam",
+   "city": null,
+   "province": null,
+   "lat": null,
+   "lon": null,
+   "stage": "wafer",
+   "role": "Wafer plant in Vietnam whose Tradeverifyd polysilicon suppliers are outside Xinjiang (Germany, US, Malaysia, Inner Mongolia, Henan). Shown for contrast.",
+   "status": "suspected",
+   "sayari_id": null,
+   "tradeverifyd_id": "6dc0560f-ccbb-4e61-a47f-c44bf5b22676",
+   "flags": [],
+   "source_ids": [
+    "tv-vnwafer-in",
+    "tv-paths-qcells"
+   ]
+  },
+  {
+   "id": "wacker",
+   "name": "Wacker Chemie AG",
+   "short": "Wacker (polysilicon, Germany)",
+   "country": "Germany",
+   "city": null,
+   "province": null,
+   "lat": null,
+   "lon": null,
+   "stage": "polysilicon",
+   "role": "Non-Xinjiang polysilicon supplier (HS 28046100) to Trina Solar (Vietnam) Wafer in Tradeverifyd. Shown for contrast.",
+   "status": "suspected",
+   "sayari_id": null,
+   "tradeverifyd_id": "5511eba9-ad1e-4c6b-8734-a56323d86877",
+   "flags": [
+    {
+     "label": "Forced Labor Research (1)",
+     "detail": "Tradeverifyd annotation badge 'Forced Labor Research': 1. Annotation details not retrieved.",
+     "source_ids": [
+      "tv-paths-qcells"
+     ]
+    }
+   ],
+   "source_ids": [
+    "tv-vnwafer-in",
+    "tv-paths-qcells"
+   ]
+  }
+ ],
+ "relationships": [
+  {
+   "id": "r1",
+   "from": "trina-vn",
+   "to": "trina-us",
+   "type": "trade",
+   "status": "verified",
+   "label": "Modules shipped to the US, Nov 2021 - Aug 2024",
+   "hs_codes": [
+    "8541"
+   ],
+   "shipment_count": null,
+   "date_range": "2021-11-29 to 2024-08-16",
+   "detail": "In Sayari's upstream supply-chain trace of Trina Solar (U.S), Trina Solar Energy Development Co. (Vietnam) appears as a tier-1 supplier of HS 8541. Shipments departed SGP/CHN/HKG/VNM for the USA from 2021-11-29 to 2024-08-16, and a second component group (SGP/VNM/JAM to USA) ran from 2023-08-28 to 2024-08-12. Shipment counts were not returned.",
+   "source_ids": [
+    "say-upstream-trina-us"
+   ]
+  },
+  {
+   "id": "r2",
+   "from": "trina-th",
+   "to": "trina-us",
+   "type": "trade",
+   "status": "verified",
+   "label": "Modules shipped from Thailand, Jun 2023 - Aug 2024",
+   "hs_codes": [
+    "8541"
+   ],
+   "shipment_count": null,
+   "date_range": "2023-05-27 to 2024-08-18",
+   "detail": "Sayari's upstream trace shows HS 8541 shipments from Thailand to Trina Solar (U.S) under several fragmented Trina Thailand shipper records: O6ZKEgctINQrO1-H8bYe_A (THA to USA, 2023-06-08 to 2024-06-09; SGP/CHN/THA/HKG to USA, 2023-06-29 to 2024-08-18), nlrQdMhycSDeZH7EPIcOSw (2023-05-27 and 2023-08-14) and a shipper labelled 'TRINA SOLAR' (2024-06-23 to 2024-08-11).",
+   "source_ids": [
+    "say-upstream-trina-us"
+   ]
+  },
+  {
+   "id": "r3",
+   "from": "trina-vn",
+   "to": "trina-us-mfg",
+   "type": "trade",
+   "status": "verified",
+   "label": "2 shipment records, 17 Sep 2024",
+   "hs_codes": [
+    "854143",
+    "85414300"
+   ],
+   "shipment_count": 2,
+   "date_range": "2024-09-17",
+   "detail": "Vietnam customs records: bifacial and double-glass monocrystalline modules (600 W NEG19RC.20; 660 W DEG21C.20) shipped from Ha Noi to Los Angeles, consigned to 1200 North Sunrise Road, Wilmer, TX. Declared values were USD 741.0 and USD 630.3, so these look like small or sample consignments. Sayari reports 6,441 total rows for this query slice, but only 2 were retrieved.",
+   "source_ids": [
+    "say-ship-vn-us"
+   ]
+  },
+  {
+   "id": "r4",
+   "from": "trina-cn",
+   "to": "trina-us",
+   "type": "trade",
+   "status": "verified",
+   "label": "Modules (shipper: Trina Solar Co.), Sep 2023 - Feb 2024",
+   "hs_codes": [
+    "8541"
+   ],
+   "shipment_count": null,
+   "date_range": "2023-09-12 to 2024-02-06",
+   "detail": "Sayari's upstream trace lists TRINA SOLAR CO LTD. as the shipper of HS 8541 goods departing Thailand for the USA between 2023-09-12 and 2024-02-06. The parent company appears to be named as shipper for goods leaving its Thai plant.",
+   "source_ids": [
+    "say-upstream-trina-us"
+   ]
+  },
+  {
+   "id": "r5",
+   "from": "tcl-zhonghuan",
+   "to": "trina-cn",
+   "type": "trade",
+   "status": "suspected",
+   "label": "Wafer supply (trade link, no shipment detail)",
+   "hs_codes": [
+    "8541"
+   ],
+   "shipment_count": null,
+   "date_range": null,
+   "detail": "Tradeverifyd lists Trina Solar Co., Ltd. as a trade customer of Tianjin Zhonghuan Semiconductor, with HS 8541 on the edge. No shipment-level records, dates or volumes were returned.",
+   "source_ids": [
+    "tv-tcl-out"
+   ]
+  },
+  {
+   "id": "r6",
+   "from": "xj-gcl",
+   "to": "tcl-zhonghuan",
+   "type": "trade",
+   "status": "suspected",
+   "label": "Xinjiang polysilicon to wafer maker (trade link)",
+   "hs_codes": [
+    "8541"
+   ],
+   "shipment_count": null,
+   "date_range": null,
+   "detail": "Tradeverifyd lists Tianjin Zhonghuan Semiconductor as the only outbound trade relationship of Xinjiang GCL, with HS 8541 on the edge (polysilicon would usually be 2804.61). This is a domestic China link with no shipment-level records returned.",
+   "source_ids": [
+    "tv-gcl-out"
+   ]
+  },
+  {
+   "id": "r7",
+   "from": "jiangsu-zhongneng",
+   "to": "xj-gcl",
+   "type": "ownership",
+   "status": "verified",
+   "label": "Shareholder (percentage not disclosed)",
+   "hs_codes": [],
+   "shipment_count": null,
+   "date_range": null,
+   "detail": "Sayari's beneficial-ownership trace shows Jiangsu Zhongneng Polysilicon as a direct shareholder (has_shareholder) of the Xinjiang GCL / Goens entity. No ownership percentage was returned.",
+   "source_ids": [
+    "say-bo-xj-gcl"
+   ]
+  },
+  {
+   "id": "r8",
+   "from": "gaojia-hk",
+   "to": "jiangsu-zhongneng",
+   "type": "ownership",
+   "status": "verified",
+   "label": "Shareholder (percentage not disclosed)",
+   "hs_codes": [],
+   "shipment_count": null,
+   "date_range": null,
+   "detail": "Sayari shows the Hong Kong company 高佳能源有限公司 as a shareholder of Jiangsu Zhongneng, two hops above Xinjiang GCL.",
+   "source_ids": [
+    "say-bo-xj-gcl"
+   ]
+  },
+  {
+   "id": "r9",
+   "from": "gcl-solar-power-hk",
+   "to": "jiangsu-zhongneng",
+   "type": "ownership",
+   "status": "verified",
+   "label": "Shareholder (percentage not disclosed)",
+   "hs_codes": [],
+   "shipment_count": null,
+   "date_range": null,
+   "detail": "Sayari shows the Hong Kong company 协鑫光伏电力科技控股有限公司 as a shareholder of Jiangsu Zhongneng. Sayari also returned 富多国际发展有限公司 (two records), which is not modelled here.",
+   "source_ids": [
+    "say-bo-xj-gcl"
+   ]
+  },
+  {
+   "id": "r10",
+   "from": "gcl-poly",
+   "to": "xj-gcl",
+   "type": "ownership",
+   "status": "suspected",
+   "label": "Parent company (non-registry source)",
+   "hs_codes": [],
+   "shipment_count": null,
+   "date_range": null,
+   "detail": "Tradeverifyd affiliate record: parent_subsidiary, source 'Tradeverifyd Legacy Data Model'. No registry document or percentage was returned.",
+   "source_ids": [
+    "tv-gcl-aff"
+   ]
+  },
+  {
+   "id": "r12",
+   "from": "trina-cn",
+   "to": "trina-vn",
+   "type": "ownership",
+   "status": "missing",
+   "label": "Parent ownership not found in records",
+   "hs_codes": [],
+   "shipment_count": null,
+   "date_range": null,
+   "detail": "The shared Trina name suggests group membership, but Sayari's beneficial-owner trace for the Vietnam plant returned no owners. No registry record links it to Trina Solar Co., Ltd.",
+   "source_ids": [
+    "say-bo-trina-vn"
+   ]
+  },
+  {
+   "id": "r13",
+   "from": "trina-cn",
+   "to": "trina-th",
+   "type": "ownership",
+   "status": "suspected",
+   "label": "Possibly owned by Section 1260H parent (indicator only)",
+   "hs_codes": [],
+   "shipment_count": null,
+   "date_range": null,
+   "detail": "The Thailand entity carries Sayari's psa_owned_by_usa_section_1260h_entity flag, an inferred ownership path that may rely on 'possibly the same as' matches. No direct registry ownership record was retrieved.",
+   "source_ids": [
+    "say-trina-th"
+   ]
+  },
+  {
+   "id": "r14",
+   "from": "hoshine",
+   "to": "xj-gcl",
+   "type": "trade",
+   "status": "missing",
+   "label": "Silicon metal supply: no record found",
+   "hs_codes": [
+    "2804"
+   ],
+   "shipment_count": null,
+   "date_range": null,
+   "detail": "No trade record shows Hoshine supplying Xinjiang GCL. Sayari's shortest path between them is a 'linked_to' tie through 中国化学工程第三建设有限公司 (a state-owned construction contractor), not a supply relationship. Hoshine's recorded exports in both tools are silicones and silicon metal to buyers in Russia and elsewhere.",
+   "source_ids": [
+    "say-path-hoshine-gcl",
+    "tv-hoshine-out",
+    "say-hoshine-buyers"
+   ]
+  },
+  {
+   "id": "r15",
+   "from": "tcl-zhonghuan",
+   "to": "maxeon",
+   "type": "trade",
+   "status": "suspected",
+   "label": "Wafer supply to Maxeon (trade link)",
+   "hs_codes": [
+    "8541"
+   ],
+   "shipment_count": null,
+   "date_range": null,
+   "detail": "Tradeverifyd lists Maxeon Solar Technologies (and separately 'Sunpower Inc') as trade customers of Tianjin Zhonghuan, with HS 8541 on the edge. No shipment-level detail was returned.",
+   "source_ids": [
+    "tv-tcl-out"
+   ]
+  },
+  {
+   "id": "r16",
+   "from": "maxeon",
+   "to": "tcl-zhonghuan",
+   "type": "ownership",
+   "status": "suspected",
+   "label": "Corporate-registry affiliate link (direction unclear)",
+   "hs_codes": [],
+   "shipment_count": null,
+   "date_range": null,
+   "detail": "Tradeverifyd lists Maxeon among the parents of Tianjin Zhonghuan (parent_subsidiary, source 'Corporate registry'), next to Zhonghuan Singapore Investment and Development Pte. Ltd. and Zhonghuan Hong Kong Development Limited. The returned direction may be inverted; confirm it before publishing.",
+   "source_ids": [
+    "tv-tcl-aff"
+   ]
+  },
+  {
+   "id": "r17",
+   "from": "wacker",
+   "to": "trina-vn-wafer",
+   "type": "trade",
+   "status": "suspected",
+   "label": "Non-Xinjiang polysilicon (HS 28046100)",
+   "hs_codes": [
+    "28046100"
+   ],
+   "shipment_count": null,
+   "date_range": null,
+   "detail": "Tradeverifyd lists Wacker as a polysilicon supplier of Trina Solar (Vietnam) Wafer. Other HS 2804.61 suppliers on record are Hemlock Semiconductor, OCIM Sdn Bhd, OCI TerraSus, Inner Mongolia Changrui, Henan Jingjie, Chuxiong Chuanzhi, AUO Crystal and Trina affiliates. None is in Xinjiang.",
+   "source_ids": [
+    "tv-vnwafer-in"
+   ]
+  },
+  {
+   "id": "r18",
+   "from": "trina-vn-wafer",
+   "to": "trina-vn",
+   "type": "trade",
+   "status": "missing",
+   "label": "Wafer supply to Vietnam module plant: not found",
+   "hs_codes": [],
+   "shipment_count": null,
+   "date_range": null,
+   "detail": "No record was retrieved showing which wafers or cells the Vietnam module plant uses. Tradeverifyd links Trina Vietnam Wafer to Hanwha Q Cells Malaysia, not to the Trina module plant.",
+   "source_ids": [
+    "tv-paths-qcells"
+   ]
+  }
+ ],
+ "sources": {
+  "say-trina-us": {
+   "provider": "sayari",
+   "title": "Entity profile: TRINA SOLAR (U.S) INC",
+   "record_id": "VFQiRsFsEiIT7DZACT9DKg",
+   "url": "https://graph.sayari.com/resource/entity/VFQiRsFsEiIT7DZACT9DKg",
+   "note": "Sources include USA Secretary of State registries and China/Colombia/South Korea import-export data. Relationship summary: receives_from 14, notify_party_of 1544, has_shareholder 1."
+  },
+  "say-trina-us-mfg": {
+   "provider": "sayari",
+   "title": "Entity: TRINA SOLAR US MANUFACTURING MODULE 1.LLC",
+   "record_id": "fNaySXclciv0ye3-Gnt6nw",
+   "url": "https://graph.sayari.com/resource/entity/fNaySXclciv0ye3-Gnt6nw",
+   "note": "Profile not fetched separately; details come from the shipment records."
+  },
+  "say-upstream-trina-us": {
+   "provider": "sayari",
+   "title": "get_upstream_supply_chain for Trina Solar (U.S) Inc, depth 1",
+   "record_id": "VFQiRsFsEiIT7DZACT9DKg",
+   "url": "https://graph.sayari.com/resource/entity/VFQiRsFsEiIT7DZACT9DKg",
+   "note": "Supplier components with HS code, departure/arrival countries and min/max dates. Shipment counts and record IDs were not returned."
+  },
+  "say-ship-vn-us": {
+   "provider": "sayari",
+   "title": "Shipment records: Trina Solar Energy Development Co. (VN) to Trina Solar US Manufacturing Module 1 LLC",
+   "record_id": "O5iBDh9NAYB7fZuz61Fgsg; dB157zDMhidQoW35GTHevQ (global_trade_internal_shipment_id {DCE79C2E-BC83-434B-9AC9383FBE9072FD}, {C40F3C26-BA53-4C4A-AAD049A216E94538}); source e5de7b52cc88ef4cd1a10e201bdf46ee",
+   "url": null,
+   "note": "Source: Vietnam Imports & Exports (January 2019 - Present). Both arrived 2024-09-17."
+  },
+  "say-trina-vn": {
+   "provider": "sayari",
+   "title": "Entity: Trina Solar Energy Development Company Limited (Vietnam)",
+   "record_id": "gqaw5UdgXpRF1NLuBqMUBg",
+   "url": "https://graph.sayari.com/resource/entity/gqaw5UdgXpRF1NLuBqMUBg",
+   "note": "Vietnam enterprise code 4601564745."
+  },
+  "say-bo-trina-vn": {
+   "provider": "sayari",
+   "title": "find_beneficial_owners: Trina Solar Energy Development (Vietnam)",
+   "record_id": "gqaw5UdgXpRF1NLuBqMUBg",
+   "url": "https://graph.sayari.com/resource/entity/gqaw5UdgXpRF1NLuBqMUBg",
+   "note": "Returned 0 owners."
+  },
+  "say-trina-th": {
+   "provider": "sayari",
+   "title": "Entity: Trina Solar Science & Technology (Thailand) Ltd.",
+   "record_id": "aEwbrgl9ykZYE_reEkjAwQ",
+   "url": "https://graph.sayari.com/resource/entity/aEwbrgl9ykZYE_reEkjAwQ",
+   "note": "Fragmented trade records for the same plant: O6ZKEgctINQrO1-H8bYe_A, nlrQdMhycSDeZH7EPIcOSw."
+  },
+  "say-trina-cn": {
+   "provider": "sayari",
+   "title": "Entity: TRINA SOLAR CO LTD.",
+   "record_id": "_DcWgs6VXAh5t4G5S6X_mQ",
+   "url": "https://graph.sayari.com/resource/entity/_DcWgs6VXAh5t4G5S6X_mQ",
+   "note": "USCC 91320411608131455L; LEI 30030040IFQ4UMZDUU48."
+  },
+  "say-bo-trina-cn": {
+   "provider": "sayari",
+   "title": "find_beneficial_owners: Trina Solar Co., Ltd.",
+   "record_id": "_DcWgs6VXAh5t4G5S6X_mQ",
+   "url": "https://graph.sayari.com/resource/entity/ocOtc8qJ_2FXewfRrnZSdw",
+   "note": "Returned 8 individual direct shareholders, none with percentages. Individuals are not named on this site."
+  },
+  "tv-trina-us": {
+   "provider": "tradeverifyd",
+   "title": "Entity: Trina Solar (u.s.), Inc.",
+   "record_id": "a34359d7-039c-451d-bccf-f8fd6ac7e0a9",
+   "url": null,
+   "note": "Matched to the Sayari record by name only (aliases 'TRINA SOLAR (U.S.) INC.'). Company number 811316238."
+  },
+  "tv-trina-cn": {
+   "provider": "tradeverifyd",
+   "title": "Entity: Trina Solar Co., Ltd.",
+   "record_id": "50e91bc4-ad5e-4f01-a0e8-d06b7b08eb57",
+   "url": "https://search.gleif.org/#/record/30030040IFQ4UMZDUU48",
+   "note": "Annotations: US NDAA 1, Forced Labor Research 1; 1,308 affiliate relationships."
+  },
+  "tv-ann-trina-1260h": {
+   "provider": "tradeverifyd",
+   "title": "Annotation: Section 1260H List of Chinese Military Companies",
+   "record_id": "84c5915e-9a55-507a-983b-222942161d00",
+   "url": "https://www.opensanctions.org/datasets/us_dod_chinese_milcorps/",
+   "note": "valid_from 2026-06-08, valid_until null."
+  },
+  "tv-ann-trina-hr": {
+   "provider": "tradeverifyd",
+   "title": "Annotation: Human Rights Violation Risk",
+   "record_id": "89c75811-ae75-50de-92ec-6eed27b3ff50",
+   "url": "https://www.shu.ac.uk/helena-kennedy-centre-international-justice/research-and-projects/all-projects/in-broad-daylight",
+   "note": "valid_from 2023-05-09."
+  },
+  "tv-score-trina": {
+   "provider": "tradeverifyd",
+   "title": "Tradeverifyd Score: Trina Solar Co., Ltd.",
+   "record_id": "50e91bc4-ad5e-4f01-a0e8-d06b7b08eb57",
+   "url": null,
+   "note": "Score 266, level High, version 1.0.0."
+  },
+  "tv-tcl": {
+   "provider": "tradeverifyd",
+   "title": "Entity: 天津中环半导体股份有限公司",
+   "record_id": "d1367341-a2a2-4471-98bd-676161e95367",
+   "url": "https://search.gleif.org/#/record/300300Y3UHPAM1FB1Y03",
+   "note": "LEI 300300Y3UHPAM1FB1Y03; company number 911200001034137808."
+  },
+  "tv-tcl-out": {
+   "provider": "tradeverifyd",
+   "title": "Trade relationships (customers) of Tianjin Zhonghuan Semiconductor",
+   "record_id": "d1367341-a2a2-4471-98bd-676161e95367",
+   "url": null,
+   "note": "3 customers: Sunpower Inc (b6d80963-3363-4d19-bcb1-2c2f2f86f932), MAXEON SOLAR TECHNOLOGIES, LTD. (fbe85778-...), Trina Solar Co., Ltd. (50e91bc4-...), all with HS 8541."
+  },
+  "tv-tcl-aff": {
+   "provider": "tradeverifyd",
+   "title": "Affiliate relationships (parents) of Tianjin Zhonghuan Semiconductor",
+   "record_id": "d1367341-a2a2-4471-98bd-676161e95367",
+   "url": null,
+   "note": "Parents listed: Zhonghuan Singapore Investment and Development Pte. Ltd., Zhonghuan Hong Kong Development Limited, Maxeon Solar Technologies (all parent_subsidiary, source Corporate registry)."
+  },
+  "tv-tcl-addr": {
+   "provider": "tradeverifyd",
+   "title": "Addresses: Tianjin Zhonghuan Semiconductor",
+   "record_id": "d1367341-a2a2-4471-98bd-676161e95367",
+   "url": null,
+   "note": "HQ: 天津新技术产业园区华苑产业区（环外）海泰东路12号, 西青区, CN-TJ."
+  },
+  "tv-score-tcl": {
+   "provider": "tradeverifyd",
+   "title": "Tradeverifyd Score: Tianjin Zhonghuan Semiconductor",
+   "record_id": "d1367341-a2a2-4471-98bd-676161e95367",
+   "url": null,
+   "note": "Score 726, level Low, version 1.0.0."
+  },
+  "tv-maxeon-out": {
+   "provider": "tradeverifyd",
+   "title": "Trade relationships (customers, HS 8541) of Maxeon Solar Technologies",
+   "record_id": "fbe85778-ad7e-4132-8d5b-6e7b6e9fe303",
+   "url": null,
+   "note": "Customers: Sunpower Philippines Manufacturing, Sun Powered Yachts LLC (854143), vietnam scientific and technical equipment limited company."
+  },
+  "say-maxeon-us": {
+   "provider": "sayari",
+   "title": "search_buyers: US buyers of HS 8541 from shippers named 'Maxeon'",
+   "record_id": "Cj8-j149WLlyxpV_XFyZQA; oEWfmSysJ8DLTPA3TuLqVg; QTbnx-Xp2Ud3WJdBEUweYg; T7zoO4sdERYTAIrHwn54fQ",
+   "url": null,
+   "note": "Only 4 small US buyers (SeriousPlayer.com Inc. x2, Sun Powered Yachts x2), 1-7 shipments each."
+  },
+  "tv-xj-gcl": {
+   "provider": "tradeverifyd",
+   "title": "Entity: Xinjiang GCL New Energy Material Technology, Co. Ltd.",
+   "record_id": "2dc6fe71-ba43-4e29-965e-e0b0f85f83d2",
+   "url": null,
+   "note": "Annotations: UFLPA 1, US BIS 3. Aliases include 'Xinjiang Goens Energy Technology Co Ltd'."
+  },
+  "tv-gcl-out": {
+   "provider": "tradeverifyd",
+   "title": "Trade relationships (customers) of Xinjiang GCL",
+   "record_id": "2dc6fe71-ba43-4e29-965e-e0b0f85f83d2",
+   "url": null,
+   "note": "One customer: 天津中环半导体股份有限公司 (d1367341-...), HS 8541."
+  },
+  "tv-gcl-aff": {
+   "provider": "tradeverifyd",
+   "title": "Affiliate relationships (parents) of Xinjiang GCL",
+   "record_id": "2dc6fe71-ba43-4e29-965e-e0b0f85f83d2",
+   "url": null,
+   "note": "GCL-Poly Energy Holdings Limited (328f2d8f-726c-4434-9640-b0391f463990), parent_subsidiary, source Tradeverifyd Legacy Data Model."
+  },
+  "tv-gcl-addr": {
+   "provider": "tradeverifyd",
+   "title": "Addresses: Xinjiang GCL",
+   "record_id": "2dc6fe71-ba43-4e29-965e-e0b0f85f83d2",
+   "url": null,
+   "note": "East Part, The 4th Horizontal Road, North Hongshaquan Industrial Park, Zhundong Economic and Technological Development Zone, Changji, Xinjiang, CN (10 address records; no coordinates)."
+  },
+  "tv-ann-gcl-uflpa": {
+   "provider": "tradeverifyd",
+   "title": "Annotation: Uyghur Forced Labor Prevention Act (Public Law No. 117-78), Section 2(d)(2)(B)(i)",
+   "record_id": "6fef2000-e54e-51b5-b853-da1023d6072f",
+   "url": "https://www.opensanctions.org/datasets/us_dhs_uflpa/",
+   "note": "valid_from 2026-08-03 as returned by the tool."
+  },
+  "tv-ann-gcl-bis": {
+   "provider": "tradeverifyd",
+   "title": "Annotations: BIS Entity List",
+   "record_id": "1d506070-b949-5c9f-809b-0d692d62f6b6; 62a64099-1618-5b8c-ba00-3fddc470103b",
+   "url": "https://www.bis.gov/regulations/ear/744#supplement-4-744",
+   "note": "valid_from 2021-06-24. A related 'Sanctions & Restricted Entities Risk' annotation is dab1fc69-c3d1-5851-8d03-1152ea04e9fc."
+  },
+  "tv-score-gcl": {
+   "provider": "tradeverifyd",
+   "title": "Tradeverifyd Score: Xinjiang GCL",
+   "record_id": "2dc6fe71-ba43-4e29-965e-e0b0f85f83d2",
+   "url": null,
+   "note": "Score 256, level High, version 1.0.0."
+  },
+  "say-xj-gcl": {
+   "provider": "sayari",
+   "title": "Entity: 新疆戈恩斯能源科技有限公司",
+   "record_id": "6lCDv7UUvcLpiTclPhUzmg",
+   "url": "https://graph.sayari.com/resource/entity/6lCDv7UUvcLpiTclPhUzmg",
+   "note": "USCC 91652300MA777G729Q. Address matches Tradeverifyd's Xinjiang GCL (Zhundong ETDZ, Changji). Returned for a search on the Chinese name of Xinjiang GCL."
+  },
+  "say-bo-xj-gcl": {
+   "provider": "sayari",
+   "title": "find_beneficial_owners: Xinjiang GCL / Goens (depth 3)",
+   "record_id": "6lCDv7UUvcLpiTclPhUzmg",
+   "url": "https://graph.sayari.com/resource/entity/bEbkWyJp1MNxTmDw7kByYQ",
+   "note": "Paths: 江苏中能硅业科技发展有限公司 (bEbkWyJp1MNxTmDw7kByYQ) to 高佳能源有限公司 (u6Xgy1m-eR--vFV1Cas7Jw), 富多国际发展有限公司 (_N9vJyWmHvd1-B8aVp42Hw, LKiFBZ40Qfn4IZ9lESK-xg), 协鑫光伏电力科技控股有限公司 (iL-yQJb5-mQUQK3h_Rrn3w). A second path via 上海铂钧企业管理有限公司 leads to person 左怡帆. No percentages."
+  },
+  "say-hoshine": {
+   "provider": "sayari",
+   "title": "Entity summary: 合盛硅业（鄯善）有限公司",
+   "record_id": "zx8g4oJszeZt7qfh5G1toA",
+   "url": "https://graph.sayari.com/resource/entity/zx8g4oJszeZt7qfh5G1toA",
+   "note": "USCC 91650421328873470Q; registered 2015-06-02; trade_count sent 54. Several other fragmentary Hoshine records exist in Sayari."
+  },
+  "tv-hoshine": {
+   "provider": "tradeverifyd",
+   "title": "Entity: HOSHINE (Hoshine Silicon Industry (Shanshan) Co., Ltd.)",
+   "record_id": "1133a4eb-db1d-4abd-85ed-617ccb8cd88e",
+   "url": "https://search.gleif.org/#/record/300300RQV6XQFC4OVX72",
+   "note": "Annotations: UFLPA 1, US BIS 2, Forced Labor Research 1. The entity merges aliases of the Zhejiang parent 合盛硅业股份有限公司."
+  },
+  "tv-ann-hoshine-uflpa": {
+   "provider": "tradeverifyd",
+   "title": "Annotations: Hoshine (UFLPA, BIS EL, Uyghur Region research)",
+   "record_id": "8ae09652-0409-58e5-9e0b-ff3304ec01fe; 30bf755a-82ff-58c6-a075-4cf9f6450192; 820bd61e-74f1-5315-a530-36446d777b1b; 0c9ad1b3-6574-5c4e-9d93-162d3dd59b9e",
+   "url": "https://www.opensanctions.org/datasets/us_dhs_uflpa/",
+   "note": "UFLPA Section 2(d)(2)(B)(v), valid_from 2022-06-21."
+  },
+  "tv-hoshine-out": {
+   "provider": "tradeverifyd",
+   "title": "Trade relationships (customers) of Hoshine",
+   "record_id": "1133a4eb-db1d-4abd-85ed-617ccb8cd88e",
+   "url": null,
+   "note": "8 customers, all Russian buyers of HS 2811220000 / 3910000008 (silica, silicones). No solar buyers."
+  },
+  "say-hoshine-buyers": {
+   "provider": "sayari",
+   "title": "search_buyers: buyers of HS 2804 from shippers named Hoshine",
+   "record_id": "SoiYuwKfwfnPGM0Z1PfAAQ; jxmrRdzJn1WszH14cFxhCw",
+   "url": null,
+   "note": "2 buyers of HS 280469 silicon metal: ANCUVER COMPANY, LTD and ПАО 'ХИМПРОМ' (Russia). No solar-chain buyers."
+  },
+  "say-path-hoshine-gcl": {
+   "provider": "sayari",
+   "title": "find_shortest_path: Hoshine (Shanshan) to Xinjiang GCL/Goens",
+   "record_id": "VQ0HQWScP5KZOIPHm8F2NA",
+   "url": "https://graph.sayari.com/resource/entity/VQ0HQWScP5KZOIPHm8F2NA",
+   "note": "The path runs through 中国化学工程第三建设有限公司 via 'linked_to' relationships. It is not a trade link."
+  },
+  "tv-vnwafer-in": {
+   "provider": "tradeverifyd",
+   "title": "Trade relationships (suppliers, HS 2804) of Trina Solar (Vietnam) Wafer Co.",
+   "record_id": "6dc0560f-ccbb-4e61-a47f-c44bf5b22676",
+   "url": null,
+   "note": "23 supplier records, including Wacker Chemie AG, Hemlock Semiconductor Corp, OCIM SDN.BHD, OCI TERRASUS, Inner Mongolia Changrui, Henan Jingjie, Chuxiong Chuanzhi and Trina affiliates. No Xinjiang supplier."
+  },
+  "tv-paths-qcells": {
+   "provider": "tradeverifyd",
+   "title": "annotated_relationship_paths from Hanwha Q Cells Georgia (HS 8541, depth 4)",
+   "record_id": "a679ccea-26d8-4112-981b-30260ba4f9e9",
+   "url": null,
+   "note": "70 annotated paths (truncated to 50). One solar path: Hanwha Q Cells Malaysia (854140/854142), then Trina Solar (Vietnam) Wafer (38180000), then Wacker Chemie AG (28046100). No path reached a Xinjiang polysilicon producer."
+  }
+ },
+ "gaps": [
+  "No cross-border shipment records of Xinjiang polysilicon or silicon metal (HS 2804.61/2804.69) were found going to any wafer, cell or module maker in this chain. The China-side links are domestic and appear only as Tradeverifyd trade-relationship edges, without dates, volumes or shipment IDs.",
+  "No record links Hoshine Silicon Industry (Shanshan) to Xinjiang GCL or any polysilicon producer in this chain. Hoshine's recorded exports are silicones and silicon metal to Russian and other buyers.",
+  "No record shows which wafers or cells Trina's Vietnam and Thailand module plants used for the specific US shipments, so the modules cannot be traced to Xinjiang GCL polysilicon at shipment level.",
+  "No registry ownership record links Trina Solar Energy Development (Vietnam) to Trina Solar Co., Ltd. Sayari's beneficial-owner trace returned no owners.",
+  "Ownership percentages were not returned for any shareholder (Trina Solar Co., Ltd.; Jiangsu Zhongneng to Xinjiang GCL; the Hong Kong holding companies). No single ultimate beneficial owner is identified.",
+  "Trina Solar (U.S) Inc's only Sayari shareholder is 'TRINA AG' (USA, sparse identifiers), which does not resolve to the Chinese parent. The US importer's ultimate owner is unconfirmed.",
+  "The specific Xinjiang-based entity behind Trina Solar Co., Ltd.'s Sayari flag 'owner_of_forced_labor_xinjiang_entity' was not retrieved.",
+  "No CBP Withhold Release Order was found directly on any entity in the chain. Hoshine carries Sayari 'owned_by_wro_entity' / 'wro_entity_adjacent' indicators, but the WRO entity itself was not retrieved.",
+  "No Maxeon shipments to a major US importer were found. Sayari shows only 4 small US buyers (SeriousPlayer.com, Sun Powered Yachts).",
+  "Xinjiang Daqo New Energy (UFLPA; Tradeverifyd parent Daqo New Energy Corp) and Xinjiang East Hope Nonferrous Metals (UFLPA) were checked. Neither has a recorded downstream link to this chain: Daqo's only Tradeverifyd outbound edge is HS 2804610000 to a Russian buyer, and East Hope has no trade edges.",
+  "No latitude/longitude coordinates were returned by either tool for any entity."
+ ],
+ "notes": "Status rules: 'verified' covers Sayari shipment-derived trade components (HS, countries, date ranges) and Sayari registry shareholder links. Tradeverifyd trade edges that carry only an HS code, with no shipment rows, are 'suspected'. For the China-side chain (Xinjiang GCL to TCL Zhonghuan to Trina Solar Co.) the edge HS code is 8541, not the 2804.61 polysilicon code, which suggests a coarse or derived classification. The UFLPA valid_from date for Xinjiang GCL was returned as 2026-08-03, and the Section 1260H valid_from date for Trina as 2026-06-08; both are reported exactly as returned. Tradeverifyd lists Maxeon as a parent of TCL Zhonghuan; that direction is unconfirmed and may be inverted. Sayari splits Trina's Thailand plant across several partial records (aEwbrgl9..., O6ZKEgct..., nlrQdMhy..., and a record labelled 'TRINA SOLAR', type person). The Sayari record used for Xinjiang GCL is named 新疆戈恩斯能源科技有限公司 (Goens), which Tradeverifyd lists as an alias of Xinjiang GCL; the two match on address. The Trina Solar (U.S.) Tradeverifyd ID is a name-only match. The two Sept 2024 Vietnam-to-Wilmer TX shipments have small declared values (about USD 630-741), so they may be samples. Many Sayari risk flags prefixed 'psa_' rely on 'possibly the same as' matches and are indicators only. Taken together, the records show a plausible exposure pathway, not proof that any particular US-imported module contains Xinjiang polysilicon."
+}

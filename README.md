@@ -1,67 +1,68 @@
 # SolarTrace
 
-An investigation dashboard that helps non-experts understand forced-labour exposure in solar supply chains. Every claim is labelled **verified record**, **suspected exposure** or **missing information**.
+**Who made the sunlight?** SolarTrace is an interactive investigation that traces a real solar supply chain, from Trina Solar's US import entities back through module plants in Vietnam and Thailand, a wafer maker in Tianjin, and a polysilicon producer in Xinjiang that is on the UFLPA Entity List.
 
-> **Sample data notice.** The companies, record IDs and shipment counts in `js/data.sample.js` are fictional. They show the shape of Sayari and Tradeverifyd evidence. The sector-context links (prefixed `T-`) are real public documents retrieved with Tavily on 19 Nov 2026.
+Every company, link and claim carries one evidence label:
 
-## Run it
+| Label | Meaning |
+|---|---|
+| **Verified record** | A retrievable record: shipment records, registry filings, official government designations |
+| **Suspected exposure** | Indicators only: company-level trade relationships, risk annotations, inferred ownership |
+| **Missing information** | We looked and found no record. Shown, never hidden |
 
-No build step. Open `index.html` in a browser, or serve the folder:
+Live site: https://bkrashi.github.io/solartrace/
 
-```sh
-python3 -m http.server 8000   # then visit http://localhost:8000
-```
+## Pages
 
-## Views
-
-| # | View | What it shows |
-|---|------|---------------|
-| 01 | The problem | Why polysilicon matters, real context figures with sources, the six-step chain, the three evidence labels |
-| 02 | The network | SVG ownership + trade graph. Click nodes or lines for records. **Trace exposure path** highlights importer → origin |
-| 03 | Findings | Each finding split into verified / suspected / missing columns, with Sayari, Tradeverifyd and Tavily source links |
+| Route | What it is |
+|---|---|
+| `#/` | Story: hero globe, scroll-driven walk up the chain, key facts |
+| `#/globe` | Full-screen 3D globe with animated trade arcs, list-status pulses and a guided camera tour |
+| `#/network` | 3D force-directed ownership & trade network. Goods-flow particles, 2D/3D, layout by tier |
+| `#/companies` | Searchable, filterable company directory |
+| `#/company/<id>` | Company file: role, flags, upstream/downstream links, mini-map, record IDs |
+| `#/findings` | Six findings, each split into verified / suspected / missing |
+| `#/timeline` | Enforcement timeline 2021–2026 from public sources |
+| `#/method` | Evidence rules, pipeline, limitations, known gaps |
+| `#/sources` | Every Sayari / Tradeverifyd record and Tavily document, searchable |
 
 ## 3-minute demo
 
-Press **3-min demo** (or `D`). A presenter bar shows a countdown, the talking point and the time cue for each step. Each step drives the UI for you.
+Press **Demo** (or `D`). A presenter bar counts down from 3:00 and drives the site through 8 steps: story → trail → globe tour → flagged companies → network path → company file → findings → live sources. `→` / `PageDown` advance (clickers work), `←` back, `Esc` exit.
 
-| Cue | Step | Screen action |
-|-----|------|---------------|
-| 0:00 | The problem | Landing hero and stats |
-| 0:30 | Our rule: three labels | Scrolls to the evidence explainer |
-| 0:55 | Start at the importer | Network, selects Lumen Ridge |
-| 1:25 | Trace exposure | Animated path; the trail turns amber at XUAR polysilicon |
-| 1:55 | What's missing matters | Selects the unidentified wafer source |
-| 2:20 | Findings | Findings view |
-| 2:45 | Next: live MCP data | Scrolls to "From sample to live" |
+## Data: where it comes from and how to refresh it
 
-Keys: `→` / `PageDown` next (presentation clickers work), `←` back, `Esc` exit, `D` toggle demo, `1` `2` `3` switch views.
+Data was pulled from live MCP connections on 19 Nov 2026:
 
-## Connecting live MCP data
-
-All UI reads one global, `window.SOLARTRACE_DATA`. To go live, generate a file with the same shape from MCP responses and load it instead of `js/data.sample.js`. Set `meta.mode = "live"` and the sample ribbon disappears.
-
-| SolarTrace field | Source tool(s) |
-|------------------|----------------|
-| `entities[]` | Sayari `search_entities`, `get_entity_profile`; Tradeverifyd `search_entities`, `entity_details` |
-| `relationships[type=ownership]` | Sayari `find_beneficial_owners`, `find_downstream_entities` |
-| `relationships[type=trade]` | Sayari `search_shipments`, `get_upstream_supply_chain`; Tradeverifyd `entity_trade_relationships` |
-| suspected indicators | Tradeverifyd `entity_annotations`, `annotated_relationship_paths`; Sayari `check_watchlist`, risk factors |
-| `sources[S-*]` | Sayari `get_record` (record provenance), Tradeverifyd relationship / annotation IDs |
-| `sources[T-*]` | Tavily `tavily_search` / `tavily_extract` |
-
-### Evidence rules (apply when mapping)
-
-- **verified**: backed by a retrievable record (registry filing, bill of lading, customs declaration).
-- **suspected**: indicators only (annotations, press or procurement announcements, shared officers or addresses, co-location) with no direct record.
-- **missing**: the question was asked and no record answered it (undisclosed owners, unexplained volume gaps). Represent these as `kind: "gap"` entities or `status: "missing"` links. Don't drop them.
-
-Node positions (`x`, `y`) are in a 1180×672 canvas. Stage columns are at x = 90, 290, 490, 690, 890, 1090. The ownership band is above y = 245.
-
-## Files
+- **Sayari**: entity profiles, beneficial ownership, upstream supply-chain traces, shipment records, risk factors
+- **Tradeverifyd**: trade relationships, affiliates, annotations (UFLPA, BIS Entity List, Section 1260H), scores, addresses
+- **Tavily**: government notices (DHS, CBP, Federal Register, Commerce), Sheffield Hallam research, IEA and Bernreuter market data, news
 
 ```
-index.html          page shell and static copy
-css/styles.css      editorial theme (ivory / forest / amber), responsive
-js/data.sample.js   illustrative dataset + real Tavily context sources
-js/app.js           router, network renderer, findings, demo presenter
+research/records.json   Sayari + Tradeverifyd trace (record IDs for every claim)
+research/public.json    Tavily public-source research (URLs, dates, facts, timeline)
+data/editorial.json     Hand-written layer: story steps, findings, map positions, corrections
+scripts/build_data.py   Merges the three, validates every reference, writes data/case.js
 ```
+
+To refresh: re-run the investigation with Claude Code (Sayari, Tradeverifyd and Tavily MCP servers connected) to regenerate `research/*.json`, then:
+
+```sh
+python3 scripts/build_data.py research
+git commit -am "Refresh data" && git push   # GitHub Pages redeploys in ~1 min
+```
+
+The site is static, so it does not query the data providers from the browser. That would expose API keys. "Live" means the data is pulled from the live services and timestamped. It is not streamed in real time.
+
+## Editorial decisions
+
+- Individual (natural-person) shareholders returned by Sayari are not published.
+- Xinjiang GCL's UFLPA listing date is shown as 21 June 2022 (DHS). Tradeverifyd records 3 Aug 2026, the date the listing was renamed.
+- An affiliate link between Maxeon and TCL Zhonghuan with an unconfirmed direction is omitted.
+- Neither data provider returned coordinates, so map positions are approximate, at city or country level.
+
+A "suspected" or "missing" label is not a finding that any company uses forced labour.
+
+## Run locally
+
+No build step needed to view: open `index.html`, or `python3 -m http.server`. The 3D libraries (globe.gl 2.46.1, 3d-force-graph 1.80.0) and the world map (world-atlas 2.0.2) load from jsDelivr when their page opens.
