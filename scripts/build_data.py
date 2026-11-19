@@ -137,6 +137,15 @@ for s in ed["story"]:
     for x in s.get("focus", []):
         if x not in ids:
             errors.append(f"story '{s['title'][:30]}' unknown entity {x}")
+for sc in ed.get("present", []):
+    for x in sc.get("add", []) + ([sc["focus"]] if sc.get("focus") else []):
+        if x not in ids:
+            errors.append(f"present {sc['id']} unknown entity {x}")
+    for x in sc.get("rels", []):
+        if x not in {r["id"] for r in rels}:
+            errors.append(f"present {sc['id']} unknown relationship {x}")
+    if sc.get("stat"):
+        chk_sources(f"present {sc['id']}", [sc["stat"]["source"]])
 for x in ed["meta"]["path"]:
     if x not in ids:
         errors.append(f"path unknown entity {x}")
@@ -166,6 +175,8 @@ out = {
     "sources": sources,
     "findings": ed["findings"],
     "story": ed["story"],
+    "present": ed.get("present", []),
+    "glossary": ed.get("glossary", {}),
     "facts": facts,
     "timeline": timeline,
     "designations": pub.get("entity_designations", []),

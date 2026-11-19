@@ -13,7 +13,7 @@
       <header class="page-head">
         <span class="kicker">Enforcement timeline · public sources</span>
         <h1>How solar became the front line</h1>
-        <p class="sub">From the first detention order on Xinjiang silicon to the largest expansion of the UFLPA Entity List. Every event links to the government notice, research report or news story behind it.</p>
+        ${ST.plain("Researchers found forced labour in Xinjiang's solar industry in 2021. The US then banned those goods, and solar became the most-stopped product at the border.")}
       </header>
       <div class="tl">${html}</div>
     </div>`;

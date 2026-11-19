@@ -36,10 +36,10 @@
     <a class="live-pill" href="#/sources" id="livePill" title="Data provenance">
       <i></i><span id="livePillText">Live data</span>
     </a>
-    <button class="demo-btn" id="demoToggle" type="button" aria-pressed="false" title="Presenter mode (D)">
+    <a class="demo-btn" id="presentBtn" href="#/present" title="Start the presentation (P)">
       <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>
-      <span>Demo</span>
-    </button>
+      <span>Present</span>
+    </a>
     <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -55,22 +55,12 @@
     <p class="disclaimer">SolarTrace shows what records and public sources say about supply-chain links. A "suspected" or "missing" label is not a finding that any company uses forced labour. It marks where evidence is incomplete. Corrections are welcome.</p>
   </footer>
 
-  <!-- presenter -->
-  <div class="demo-bar" id="demoBar" hidden role="region" aria-label="Demo presenter">
-    <div class="demo-clock"><span id="demoTime">3:00</span><div class="demo-progress"><i id="demoProgress"></i></div></div>
-    <div class="demo-step"><span class="demo-count" id="demoCount"></span><p id="demoText"></p></div>
-    <div class="demo-ctrls">
-      <button type="button" id="demoPrev" aria-label="Previous step">←</button>
-      <button type="button" id="demoNext" class="primary">Next →</button>
-      <button type="button" id="demoClose" aria-label="Exit demo">✕</button>
-    </div>
-  </div>
-
   <div class="tooltip" id="tooltip" role="tooltip" hidden></div>
 
   <script src="data/case.js"></script>
   <script src="js/core.js"></script>
   <script src="js/pages/home.js"></script>
+  <script src="js/pages/present.js"></script>
   <script src="js/pages/globe.js"></script>
   <script src="js/pages/network.js"></script>
   <script src="js/pages/companies.js"></script>

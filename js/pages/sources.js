@@ -9,7 +9,7 @@
       <header class="page-head">
         <span class="kicker">Sources &amp; live data</span>
         <h1>Every record, every link</h1>
-        <p class="sub">SolarTrace's data was pulled from live connections to Sayari, Tradeverifyd and Tavily on ${esc(ST.fmtDate(D.meta.retrieved))}. Re-running the investigation regenerates this whole site.</p>
+        ${ST.plain(`Every fact on this site comes from one of these ${Object.keys(D.sources).length} records or documents, pulled live on ${esc(ST.fmtDate(D.meta.retrieved))}. Click any one to check it yourself.`)}
       </header>
       <div class="prov-stats">
         ${["sayari", "tradeverifyd", "tavily"].map((p) => `<div class="prov-stat card">${ST.prov(p)}<div class="n" data-count="${by(p)}">0</div><div class="muted small">${esc(P[p]?.label || "")}</div><div class="live" style="margin-top:8px"><i></i>${esc(P[p]?.status === "live" ? "Live pull · " + ST.fmtDate(P[p].retrieved || D.meta.retrieved) : (P[p]?.status || ""))}</div></div>`).join("")}

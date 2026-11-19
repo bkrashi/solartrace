@@ -7,7 +7,7 @@
       <header class="page-head">
         <span class="kicker">Method</span>
         <h1>How SolarTrace knows what it knows</h1>
-        <p class="sub">An investigation is only as good as its rules. These are ours.</p>
+        ${ST.plain("We pulled real records from three databases, sorted every link into proven, suspected or unknown, and showed our gaps.")}
       </header>
 
       <section>
@@ -25,12 +25,17 @@
       <section class="section" style="padding-top:60px">
         <header class="section-head"><span class="kicker">Evidence rules</span><h2>Three labels, applied the same way everywhere</h2></header>
         <div class="rules">
-          ${["verified", "suspected", "missing"].map((k) => `<div class="rule card rv"><div>${ST.badge(k)}</div><div><p>${ST.STATUS[k].explain}</p><p class="muted small" style="margin-top:8px">${{
+          ${["verified", "suspected", "missing"].map((k) => `<div class="rule card rv"><div>${ST.badge(k)}<span class="badge-sub">Technical term: ${ST.STATUS[k].tech}</span></div><div><p>${ST.STATUS[k].explain}</p><p class="muted small" style="margin-top:8px">${{
             verified: "Examples: shipment-level trade records, registry ownership filings, a company's name on the UFLPA Entity List or under a CBP Withhold Release Order.",
             suspected: "Examples: an aggregated or inferred trade relationship without shipment-level records, a risk annotation, a shared address or officer, a reported procurement agreement.",
             missing: "Examples: an undisclosed beneficial owner, a supplier we could not identify, volume that known shipments don't explain."
           }[k]}</p></div></div>`).join("")}
         </div>
+      </section>
+
+      <section class="section" style="padding-top:60px">
+        <header class="section-head"><span class="kicker">Glossary</span><h2>Words, in plain English</h2></header>
+        <dl class="glossary">${Object.entries(D.glossary || {}).map(([k, v]) => `<div class="card"><dt>${esc(k.replace("-", " ").replace(/^./, (c) => c.toUpperCase()).replace("Uflpa", "UFLPA").replace("Wro", "WRO").replace("Hs", "HS code"))}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
       </section>
 
       <section class="section" style="padding-top:60px">

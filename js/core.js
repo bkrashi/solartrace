@@ -12,10 +12,11 @@
 
   /* ---------- vocab ---------- */
   ST.STATUS = {
-    verified: { label: "Verified record", short: "Verified", color: "#2e6447", explain: "A retrievable record documents this, such as a shipment record, registry filing or official designation." },
-    suspected: { label: "Suspected exposure", short: "Suspected", color: "#d4901a", explain: "Indicators point here, such as risk annotations, inferred trade links or a shared location, but no direct record confirms it." },
-    missing: { label: "Missing information", short: "Missing", color: "#8b8a80", explain: "We looked and could not find the record. This is an open question, not an accusation." }
+    verified: { label: "Proven", short: "Proven", tech: "Verified record", color: "#2e6447", plain: "We have the paperwork.", explain: "We have the paperwork: shipping records, company filings or a government list." },
+    suspected: { label: "Suspected", short: "Suspected", tech: "Suspected exposure", color: "#d4901a", plain: "Clues point here, no paperwork yet.", explain: "Clues point to this link, like trade data or warning flags, but no paperwork proves it." },
+    missing: { label: "Unknown", short: "Unknown", tech: "Missing information", color: "#8b8a80", plain: "We looked and found nothing.", explain: "We looked and found no record. That's a gap, not a verdict." }
   };
+  ST.name = (e) => (e ? e.plain || e.short || e.name : "");
   ST.PROVIDER = { sayari: "Sayari", tradeverifyd: "Tradeverifyd", tavily: "Tavily", derived: "Derived", editorial: "SolarTrace" };
   ST.STAGES = D.stages;
   ST.stageById = Object.fromEntries(D.stages.map((s, i) => [s.id, { ...s, index: i }]));
@@ -65,6 +66,27 @@
     return `${+m[3]} ${M[+m[2] - 1]} ${m[1]}`;
   };
 
+  /* ---------- plain words + glossary ---------- */
+  ST.plain = (text) => text ? `<p class="plain"><span class="plain-tag">In plain words</span>${text}</p>` : "";
+  ST.term = (key, text) => `<span class="term" tabindex="0" data-term="${key}">${text}</span>`;
+  // auto-link glossary words in a plain-text string (first occurrence of each)
+  ST.withTerms = (txt) => {
+    let out = ST.esc(txt);
+    const map = { polysilicon: "polysilicon", wafers: "wafer", wafer: "wafer", "UFLPA": "uflpa", "Xinjiang": "xinjiang", "blacklist": "entity-list", "Entity List": "entity-list" };
+    const done = new Set();
+    Object.keys(map).forEach((w) => {
+      if (done.has(map[w])) return;
+      const re = new RegExp(`\\b(${w})\\b`);
+      if (re.test(out)) { out = out.replace(re, `<span class="term" tabindex="0" data-term="${map[w]}">$1</span>`); done.add(map[w]); }
+    });
+    return out;
+  };
+  const termTip = (el) => { const d = (D.glossary || {})[el.dataset.term]; if (!d) return; const r = el.getBoundingClientRect(); ST.showTip(r.left, r.bottom - 6, `<b>${ST.esc(el.textContent)}</b><br>${ST.esc(d)}`); };
+  document.addEventListener("mouseover", (e) => { const t = e.target.closest && e.target.closest(".term"); if (t) termTip(t); });
+  document.addEventListener("mouseout", (e) => { if (e.target.closest && e.target.closest(".term")) ST.hideTip(); });
+  document.addEventListener("focusin", (e) => { const t = e.target.closest && e.target.closest(".term"); if (t) termTip(t); });
+  document.addEventListener("focusout", (e) => { if (e.target.closest && e.target.closest(".term")) ST.hideTip(); });
+
   /* ---------- tooltip ---------- */
   const tip = () => document.getElementById("tooltip");
   ST.showTip = (x, y, html) => {
@@ -101,7 +123,7 @@
   /* ---------- reveal-on-scroll ---------- */
   let io;
   ST.reveal = (root) => {
-    io = io || new IntersectionObserver((es) => es.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } }), { threshold: 0.12 });
+    io = io || new IntersectionObserver((es) => es.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } }), { threshold: 0, rootMargin: "0px 0px -6% 0px" });
     ST.$$(".rv", root).forEach((el) => io.observe(el));
   };
 

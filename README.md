@@ -16,9 +16,10 @@ Live site: https://bkrashi.github.io/solartrace/
 
 | Route | What it is |
 |---|---|
-| `#/` | Story: hero globe, scroll-driven walk up the chain, key facts |
+| `#/present` | **Presentation**: 13 scenes, the chain builds itself on the globe |
+| `#/` | Story: hero globe, scroll-driven walk up the chain, key facts, glossary |
 | `#/globe` | Full-screen 3D globe with animated trade arcs, list-status pulses and a guided camera tour |
-| `#/network` | 3D force-directed ownership & trade network. Goods-flow particles, 2D/3D, layout by tier |
+| `#/network` | 3D ownership & trade network. "Build it step by step" grows the web company by company |
 | `#/companies` | Searchable, filterable company directory |
 | `#/company/<id>` | Company file: role, flags, upstream/downstream links, mini-map, record IDs |
 | `#/findings` | Six findings, each split into verified / suspected / missing |
@@ -26,9 +27,27 @@ Live site: https://bkrashi.github.io/solartrace/
 | `#/method` | Evidence rules, pipeline, limitations, known gaps |
 | `#/sources` | Every Sayari / Tradeverifyd record and Tavily document, searchable |
 
-## 3-minute demo
+## Presenting (3 minutes)
 
-Press **Demo** (or `D`). A presenter bar counts down from 3:00 and drives the site through 8 steps: story → trail → globe tour → flagged companies → network path → company file → findings → live sources. `→` / `PageDown` advance (clickers work), `←` back, `Esc` exit.
+Press **▶ Present** (top right) or the `P` key. It opens a full-screen story with 13 short scenes. With each click the supply chain **draws itself on the 3D globe**, one company and one shipping line at a time, while a progress bar (USA → panel factories → China HQ → wafers → Xinjiang plant → raw silicon) fills in green, orange or grey.
+
+| Keys | |
+|---|---|
+| `→` / `Space` / clicker | next scene |
+| `←` | back |
+| `F` | full screen |
+| `Esc` | exit |
+
+The timer in the corner counts up so you can pace yourself (about 12–14 seconds per scene). **Auto** plays it hands-free. Link to any scene with `#/present?s=5`.
+
+Suggested flow: Present mode (2 min) → open the **Network** and press **Build it step by step** (30 s) → open one **company file** (30 s).
+
+## Plain language
+
+- Evidence labels are **Proven** (we have the paperwork), **Suspected** (clues, no paperwork) and **Unknown** (we looked, found nothing). The Method page maps these to the technical terms.
+- Every page has an **"In plain words"** line.
+- Dotted words (polysilicon, wafer, UFLPA, blacklist, Xinjiang…) show a definition on hover; the full glossary is on the Method page.
+- Companies have simple names ("Panel factory in Vietnam") with the registered name underneath.
 
 ## Data: where it comes from and how to refresh it
 

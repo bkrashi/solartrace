@@ -6,14 +6,14 @@
     let filter = "all";
     const t = { verified: 0, suspected: 0, missing: 0 };
     D.findings.forEach((f) => ["verified", "suspected", "missing"].forEach((k) => (t[k] += (f[k] || []).length)));
-    const PL = { verified: ["Verified record", "Verified records"], suspected: ["Suspected exposure", "Suspected exposures"], missing: ["Missing item", "Missing items"] };
-    const SUB = { verified: "facts backed by records", suspected: "leads that need confirming", missing: "open questions to close" };
+    const PL = { verified: ["Proven fact", "Proven facts"], suspected: ["Suspected link", "Suspected links"], missing: ["Unknown", "Unknowns"] };
+    const SUB = { verified: "backed by paperwork", suspected: "clues, but no paperwork", missing: "we looked and found nothing" };
 
     app.innerHTML = `<div class="wrap">
       <header class="page-head">
         <span class="kicker">Findings · ${D.findings.length}</span>
         <h1>What we know, what we suspect, what's missing</h1>
-        <p class="sub">Each finding splits its evidence into three columns and cites its records. Sayari and Tradeverifyd records show their IDs. Tavily sources link to the public document.</p>
+        ${ST.plain("Six things we learned. For each one: what we can prove (green), what we suspect (orange), and what we couldn't find (grey).")}
       </header>
       <div class="tally">${["verified", "suspected", "missing"].map((k) => `<div class="tally-card ${k}"><span class="n" data-count="${t[k]}">0</span><div><div class="t">${PL[k][t[k] === 1 ? 0 : 1]}</div><div class="s">${SUB[k]}</div></div></div>`).join("")}</div>
       <div class="chips" id="ff" style="margin-bottom:22px"><span class="lbl">Headline</span><button class="chip is-on" data-ff="all" type="button">All</button>${["verified", "suspected", "missing"].map((k) => `<button class="chip" data-ff="${k}" type="button">${ST.STATUS[k].short}</button>`).join("")}</div>
@@ -27,6 +27,7 @@
         <article class="finding card rv in" id="finding-${f.id}">
           <div class="finding-top"><span class="finding-id">${esc(f.id)}</span>${ST.badge(f.status, "Headline: " + ST.STATUS[f.status].short)}<span class="sev">Severity <b>${esc(f.severity)}</b></span></div>
           <h2>${esc(f.title)}</h2>
+          ${ST.plain(esc(f.plain || ""))}
           <p class="summary">${esc(f.summary)}</p>
           <div class="ev-cols">${col("verified", f.verified || [])}${col("suspected", f.suspected || [])}${col("missing", f.missing || [])}</div>
           ${f.why ? `<p class="why">${esc(f.why)}</p>` : ""}

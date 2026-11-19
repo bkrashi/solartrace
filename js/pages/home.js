@@ -27,9 +27,10 @@
             <span class="kicker">A live investigation · ${esc(D.meta.caseShort || "")}</span>
             <h1>Who made the <span class="hl">sunlight?</span></h1>
             <p class="lede">${esc(D.meta.heroLede)}</p>
+            ${ST.plain("Some solar panels sold in America may contain silicon made with forced labour in China. We followed the paper trail to see how much of that risk we can actually prove.")}
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#story">Follow the trail <span aria-hidden="true">↓</span></a>
-              <a class="btn btn-amber" href="#/globe">Open the 3D globe →</a>
+              <a class="btn btn-amber btn-big" href="#/present">▶ Watch the story (2 min)</a>
+              <a class="btn btn-ghost" href="#story">Or scroll it yourself ↓</a>
             </div>
           </div>
           <div class="hero-globe" id="heroGlobe">
@@ -49,7 +50,7 @@
           <header class="section-head rv">
             <span class="kicker">The trail, step by step</span>
             <h2>${esc(D.meta.storyTitle || "From a US port back to Xinjiang")}</h2>
-            <p>${esc(D.meta.storyIntro || "")}</p>
+            ${ST.plain("Read from the bottom up. Each card is one step back toward the raw material. The coloured label says how sure we are.")}
           </header>
           <div class="story">
             <div class="story-graphic"><div class="card">
@@ -62,7 +63,7 @@
                   <div class="card">
                     <span class="tier">${esc(s.kicker || "")}</span>
                     <h3>${esc(s.title)}</h3>
-                    <p>${esc(s.body)}</p>
+                    <p>${ST.withTerms(s.body)}</p>
                     <div class="meta">${s.status ? ST.badge(s.status) : ""}${(s.focus || []).slice(0, 3).map((id) => ST.entityLink(id)).join(" · ")}</div>
                     ${s.source_ids && s.source_ids.length ? `<div class="rec">Evidence: ${s.source_ids.slice(0, 3).map((id) => { const x = D.sources[id]; return x ? `${ST.prov(x.provider)} ${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title)}</a>` : esc(x.title)}` : ""; }).join("<br>")}</div>` : ""}
                   </div>
@@ -97,10 +98,19 @@
         </section>
 
         <section class="section">
-          <header class="section-head rv"><span class="kicker">Explore</span><h2>Six ways into the evidence</h2></header>
+          <header class="section-head rv"><span class="kicker">Words you'll hear</span><h2>Six words explain the whole story</h2>
+            ${ST.plain("Hover over any dotted word on this site to see what it means.")}</header>
+          <div class="gloss">
+            ${[["polysilicon", "Polysilicon", "🧪"], ["wafer", "Wafer", "◐"], ["module", "Module (panel)", "▦"], ["xinjiang", "Xinjiang", "📍"], ["uflpa", "UFLPA", "⚖"], ["entity-list", "Entity List", "⛔"]].map(([k, t, i]) => `<div class="gloss-card card rv"><span class="gi">${i}</span><h3>${t}</h3><p>${esc((D.glossary || {})[k] || "")}</p></div>`).join("")}
+          </div>
+        </section>
+
+        <section class="section">
+          <header class="section-head rv"><span class="kicker">Explore</span><h2>Ways into the evidence</h2></header>
           <div class="explore">
             ${[
-              ["globe", "#/globe", "3D globe", "Watch goods flow across borders. Take the guided tour from the US port back to the smelter."],
+              ["globe", "#/present", "▶ The 2-minute story", "Click through the chain step by step while it draws itself on the globe. Best for presenting."],
+              ["globe", "#/globe", "3D globe", "Spin the world and click any company or shipping line to see the proof behind it."],
               ["network", "#/network", "3D network", "Rotate the web of ownership and trade. Particles show goods moving through it."],
               ["companies", "#/companies", "Company files", "A profile for every entity: location, flags, links and the records behind them."],
               ["findings", "#/findings", "Findings", "What is verified, what is suspected and what is missing, finding by finding."],

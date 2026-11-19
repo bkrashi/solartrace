@@ -15,7 +15,7 @@ window.SOLARTRACE = {
   ],
   "spotlight": "xj-gcl",
   "retrieved": "2026-11-19",
-  "built": "2026-11-19T18:22:10+00:00",
+  "built": "2026-11-19T20:14:16+00:00",
   "providers": {
    "sayari": {
     "status": "live",
@@ -111,6 +111,8 @@ window.SOLARTRACE = {
     "say-trina-us",
     "tv-trina-us"
    ],
+   "plain": "Trina Solar's US company",
+   "plainRole": "Brings finished solar panels into the United States.",
    "approx": true,
    "country_iso": "840"
   },
@@ -141,6 +143,8 @@ window.SOLARTRACE = {
     "say-ship-vn-us",
     "say-trina-us-mfg"
    ],
+   "plain": "Trina's factory in Texas",
+   "plainRole": "Received solar panels shipped from Vietnam in 2024.",
    "approx": true,
    "country_iso": "840"
   },
@@ -186,6 +190,8 @@ window.SOLARTRACE = {
     "say-ship-vn-us",
     "say-upstream-trina-us"
    ],
+   "plain": "Panel factory in Vietnam",
+   "plainRole": "Puts solar panels together and ships them to the US.",
    "approx": true,
    "country_iso": "704"
   },
@@ -223,6 +229,8 @@ window.SOLARTRACE = {
     "say-trina-th",
     "say-upstream-trina-us"
    ],
+   "plain": "Panel factory in Thailand",
+   "plainRole": "Puts solar panels together and ships them to the US.",
    "approx": true,
    "country_iso": "764"
   },
@@ -284,6 +292,8 @@ window.SOLARTRACE = {
     "tv-trina-cn",
     "tv-score-trina"
    ],
+   "plain": "Trina Solar headquarters, China",
+   "plainRole": "The Chinese parent company. It makes solar cells and runs the factories abroad.",
    "approx": true,
    "country_iso": "156"
   },
@@ -316,6 +326,8 @@ window.SOLARTRACE = {
     "tv-tcl-addr",
     "tv-score-tcl"
    ],
+   "plain": "Wafer maker in Tianjin",
+   "plainRole": "Slices silicon into thin wafers, the base of every solar cell.",
    "approx": true,
    "country_iso": "156"
   },
@@ -340,6 +352,8 @@ window.SOLARTRACE = {
     "tv-maxeon-out",
     "say-maxeon-us"
    ],
+   "plain": "Maxeon, another panel company",
+   "plainRole": "Another panel company that buys wafers from the same supplier.",
    "country_iso": null
   },
   {
@@ -406,6 +420,8 @@ window.SOLARTRACE = {
     "T-dhs-entity-list"
    ],
    "alias": "Xinjiang Goens Energy Technology Co., Ltd. (新疆戈恩斯能源科技有限公司)",
+   "plain": "Polysilicon plant in Xinjiang",
+   "plainRole": "Makes polysilicon, the super-pure silicon inside solar cells. It is on a US government list of companies linked to forced labour.",
    "approx": true,
    "country_iso": "156"
   },
@@ -435,6 +451,8 @@ window.SOLARTRACE = {
    "source_ids": [
     "say-bo-xj-gcl"
    ],
+   "plain": "GCL company in Jiangsu",
+   "plainRole": "Owns the Xinjiang polysilicon plant, according to company records.",
    "approx": true,
    "country_iso": "156"
   },
@@ -456,6 +474,8 @@ window.SOLARTRACE = {
    "source_ids": [
     "say-bo-xj-gcl"
    ],
+   "plain": "GCL holding company, Hong Kong",
+   "plainRole": "Sits higher up the ownership chain of the Xinjiang plant.",
    "approx": true,
    "country_iso": null
   },
@@ -477,6 +497,8 @@ window.SOLARTRACE = {
    "source_ids": [
     "say-bo-xj-gcl"
    ],
+   "plain": "GCL holding company, Hong Kong",
+   "plainRole": "Sits higher up the ownership chain of the Xinjiang plant.",
    "approx": true,
    "country_iso": null
   },
@@ -498,6 +520,8 @@ window.SOLARTRACE = {
    "source_ids": [
     "tv-gcl-aff"
    ],
+   "plain": "GCL-Poly, the group parent",
+   "plainRole": "The listed parent group, according to one dataset only.",
    "country_iso": null
   },
   {
@@ -573,6 +597,8 @@ window.SOLARTRACE = {
     "T-cbp-wro-hoshine",
     "T-fr-2022-entity-list"
    ],
+   "plain": "Silicon smelter in Xinjiang",
+   "plainRole": "Melts quartz rock into raw silicon. It is on the US forced-labour list, but we found no record linking it to this chain.",
    "approx": true,
    "country_iso": "156"
   },
@@ -595,6 +621,8 @@ window.SOLARTRACE = {
     "tv-vnwafer-in",
     "tv-paths-qcells"
    ],
+   "plain": "Trina wafer factory, Vietnam",
+   "plainRole": "Buys its polysilicon from suppliers outside Xinjiang.",
    "approx": true,
    "country_iso": "704"
   },
@@ -625,6 +653,8 @@ window.SOLARTRACE = {
     "tv-vnwafer-in",
     "tv-paths-qcells"
    ],
+   "plain": "Wacker, polysilicon maker in Germany",
+   "plainRole": "A polysilicon supplier outside Xinjiang.",
    "approx": true,
    "country_iso": "276"
   }
@@ -1358,7 +1388,8 @@ window.SOLARTRACE = {
     "tv-ann-gcl-uflpa",
     "T-fr-2022-entity-list",
     "T-cbp-uflpa-stats"
-   ]
+   ],
+   "plain": "Panels sold in the US can be traced, on paper, back to a blacklisted factory in Xinjiang. The US end is proven; the China end is only suspected."
   },
   {
    "id": "F2",
@@ -1399,7 +1430,8 @@ window.SOLARTRACE = {
     "T-fr-2026-entity-list",
     "T-commerce-bis-2021",
     "T-shu-broad-daylight"
-   ]
+   ],
+   "plain": "The polysilicon plant at the end of the trail is on two US government blacklists and is located in Xinjiang."
   },
   {
    "id": "F3",
@@ -1431,7 +1463,8 @@ window.SOLARTRACE = {
     "say-ship-vn-us",
     "tv-tcl-out",
     "tv-gcl-out"
-   ]
+   ],
+   "plain": "The most important links, inside China, have no shipping records anyone can check."
   },
   {
    "id": "F4",
@@ -1465,7 +1498,8 @@ window.SOLARTRACE = {
     "tv-score-trina",
     "say-trina-cn",
     "say-trina-th"
-   ]
+   ],
+   "plain": "Trina's Chinese parent company has several warning flags in both databases."
   },
   {
    "id": "F5",
@@ -1494,7 +1528,8 @@ window.SOLARTRACE = {
     "say-path-hoshine-gcl",
     "tv-hoshine-out",
     "T-cbp-wro-hoshine"
-   ]
+   ],
+   "plain": "A second blacklisted Xinjiang company is nearby, but we found no record linking it to this chain."
   },
   {
    "id": "F6",
@@ -1522,7 +1557,8 @@ window.SOLARTRACE = {
     "tv-paths-qcells",
     "T-seia-std101",
     "T-ssi-traceability"
-   ]
+   ],
+   "plain": "Trina also buys silicon from outside Xinjiang, but we can't tell which silicon ends up in which panel."
   }
  ],
  "story": [
@@ -1657,6 +1693,261 @@ window.SOLARTRACE = {
    "source_ids": []
   }
  ],
+ "present": [
+  {
+   "id": "intro",
+   "kicker": "SolarTrace",
+   "title": "Who made the sunlight?",
+   "text": "Solar panels fight climate change. But the silicon inside many of them comes from a region where the US government says people are forced to work. We followed one real supply chain to see how close that risk gets.",
+   "camera": {
+    "lat": 28,
+    "lng": 75,
+    "alt": 2.6
+   },
+   "spin": true
+  },
+  {
+   "id": "stat",
+   "kicker": "The problem",
+   "title": "Almost half came from one place",
+   "text": "In 2020, about 45% of the world's solar-grade polysilicon, the purified silicon inside solar cells, was made in Xinjiang, China.",
+   "stat": {
+    "value": "≈45%",
+    "label": "of the world's solar silicon was made in Xinjiang (2020)",
+    "source": "T-shu-broad-daylight"
+   },
+   "camera": {
+    "lat": 41,
+    "lng": 86,
+    "alt": 1.8
+   }
+  },
+  {
+   "id": "law",
+   "kicker": "The rule",
+   "title": "So the US made a law",
+   "text": "Since June 2022, US law assumes that anything made in Xinjiang, or by a company on a government blacklist, was made with forced labour. The importer has to prove otherwise, or the goods are stopped at the border.",
+   "stat": {
+    "value": "$3.26B",
+    "label": "of solar panels and cells stopped at the US border under this law (Reuters, Feb 2026)",
+    "source": "T-reuters-solar-seizures"
+   },
+   "camera": {
+    "lat": 38,
+    "lng": -98,
+    "alt": 2.0
+   }
+  },
+  {
+   "id": "legend",
+   "kicker": "How to read the map",
+   "title": "Every line has a colour",
+   "text": "Each line we draw is a link between two companies. Its colour tells you how sure we are about that link.",
+   "legend": true,
+   "camera": {
+    "lat": 30,
+    "lng": 100,
+    "alt": 2.4
+   }
+  },
+  {
+   "id": "usa",
+   "kicker": "Step 1 · The buyer",
+   "rail": 0,
+   "status": "verified",
+   "title": "Panels arrive in the USA",
+   "text": "Trina Solar's US companies, including a factory in Texas, receive solar panels from overseas.",
+   "evidence": "US and Vietnamese shipping records",
+   "add": [
+    "trina-us",
+    "trina-us-mfg"
+   ],
+   "focus": "trina-us-mfg",
+   "alt": 1.7
+  },
+  {
+   "id": "factories",
+   "kicker": "Step 2 · The panel factories",
+   "rail": 1,
+   "status": "verified",
+   "title": "Made in Vietnam and Thailand",
+   "text": "Shipping records show the panels came from Trina's own factories in Vietnam and Thailand between 2021 and 2024.",
+   "evidence": "Shipping records (Sayari)",
+   "add": [
+    "trina-vn",
+    "trina-th"
+   ],
+   "rels": [
+    "r1",
+    "r2",
+    "r3"
+   ],
+   "focus": "trina-th",
+   "alt": 2.6
+  },
+  {
+   "id": "hq",
+   "kicker": "Step 3 · The parent company",
+   "rail": 2,
+   "status": "verified",
+   "title": "Run from China",
+   "text": "Trina Solar's headquarters in Changzhou, China, is named as the shipper on some of these US-bound shipments.",
+   "evidence": "Shipping records (Sayari)",
+   "add": [
+    "trina-cn"
+   ],
+   "rels": [
+    "r4"
+   ],
+   "focus": "trina-cn",
+   "alt": 1.5,
+   "labels": [
+    "trina-cn",
+    "trina-vn",
+    "trina-th"
+   ]
+  },
+  {
+   "id": "wafers",
+   "kicker": "Step 4 · The wafers",
+   "rail": 3,
+   "status": "suspected",
+   "title": "The trail turns orange",
+   "text": "Trade data says Trina buys wafers, thin slices of silicon, from TCL Zhonghuan in Tianjin. But no shipping records prove it.",
+   "evidence": "Company-level trade data (Tradeverifyd)",
+   "add": [
+    "tcl-zhonghuan"
+   ],
+   "rels": [
+    "r5"
+   ],
+   "focus": "tcl-zhonghuan",
+   "alt": 1.2,
+   "labels": [
+    "tcl-zhonghuan",
+    "trina-cn",
+    "trina-vn"
+   ]
+  },
+  {
+   "id": "xinjiang",
+   "kicker": "Step 5 · The silicon",
+   "rail": 4,
+   "status": "suspected",
+   "title": "Into Xinjiang",
+   "text": "Trade data also says TCL Zhonghuan buys from Xinjiang GCL, a polysilicon plant on the US forced-labour blacklist since 2022. Again, no shipping records prove it.",
+   "evidence": "Trade data (Tradeverifyd) and the US government blacklist",
+   "add": [
+    "xj-gcl"
+   ],
+   "rels": [
+    "r6"
+   ],
+   "focus": "xj-gcl",
+   "alt": 1.25,
+   "labels": [
+    "xj-gcl",
+    "tcl-zhonghuan",
+    "trina-cn",
+    "trina-vn"
+   ]
+  },
+  {
+   "id": "cold",
+   "kicker": "Step 6 · The raw silicon",
+   "rail": 5,
+   "status": "missing",
+   "title": "Where the trail goes cold",
+   "text": "Hoshine, a silicon smelter nearby, is also on the blacklist. But we found no record that it supplies this chain, so we show the gap instead of guessing.",
+   "evidence": "We searched both databases and found nothing",
+   "add": [
+    "hoshine"
+   ],
+   "rels": [
+    "r14"
+   ],
+   "focus": "hoshine",
+   "alt": 1.0,
+   "labels": [
+    "hoshine",
+    "xj-gcl",
+    "tcl-zhonghuan"
+   ]
+  },
+  {
+   "id": "owners",
+   "kicker": "Who owns the plant?",
+   "status": "verified",
+   "title": "Owned through Hong Kong",
+   "text": "Company records show the Xinjiang plant is owned by a GCL company in Jiangsu, which in turn is owned by GCL companies in Hong Kong.",
+   "evidence": "Company ownership records (Sayari)",
+   "add": [
+    "jiangsu-zhongneng",
+    "gaojia-hk",
+    "gcl-solar-power-hk"
+   ],
+   "rels": [
+    "r7",
+    "r8",
+    "r9"
+   ],
+   "focus": "jiangsu-zhongneng",
+   "alt": 1.9,
+   "labels": [
+    "jiangsu-zhongneng",
+    "gaojia-hk",
+    "xj-gcl"
+   ]
+  },
+  {
+   "id": "verdict",
+   "kicker": "The verdict",
+   "status": "suspected",
+   "title": "Exposed, but not proven",
+   "text": "The US end of this chain is proven by records, but the China end is only suspected. That is a real risk under US law. Still, nobody outside these companies can prove what is inside a single panel.",
+   "tally": true,
+   "camera": {
+    "lat": 30,
+    "lng": 125,
+    "alt": 2.5
+   },
+   "labels": [
+    "trina-us-mfg",
+    "trina-vn",
+    "trina-cn",
+    "tcl-zhonghuan",
+    "xj-gcl"
+   ]
+  },
+  {
+   "id": "fix",
+   "kicker": "What would fix it",
+   "title": "Trace every panel back to the rock",
+   "text": "The fix is full traceability: records for every step, from quartz rock to finished panel. Industry standards for this already exist, and buyers can demand them.",
+   "cta": true,
+   "camera": {
+    "lat": 28,
+    "lng": 75,
+    "alt": 2.6
+   },
+   "spin": true
+  }
+ ],
+ "glossary": {
+  "polysilicon": "Super-pure silicon. It is the key raw material inside almost every solar panel.",
+  "wafer": "A thin slice cut from a block of polysilicon. Solar cells are made from wafers.",
+  "cell": "The part of a panel that turns sunlight into electricity.",
+  "module": "The finished solar panel: many cells framed together.",
+  "importer": "The company that brings goods into the US and is responsible for them at the border.",
+  "uflpa": "The Uyghur Forced Labor Prevention Act (US law, 2021). It assumes goods made in Xinjiang, or by listed companies, involve forced labour unless the importer proves otherwise.",
+  "entity-list": "A US government blacklist of companies. Goods from listed companies are presumed to be made with forced labour.",
+  "xinjiang": "A region in northwest China (also called the XUAR or Uyghur Region) where the US and researchers have documented state-run forced labour.",
+  "wro": "Withhold Release Order: an order letting US Customs hold shipments suspected of being made with forced labour.",
+  "hs": "A customs code that says what a product is. 8541 covers solar cells and panels; 2804.61 is polysilicon.",
+  "sayari": "A database of company ownership and shipping records from 250+ countries.",
+  "tradeverifyd": "A database of trade relationships between companies, plus risk warnings.",
+  "tavily": "A search tool we used to find government notices, research and news."
+ },
  "facts": [
   {
    "id": "xinjiang-poly-share-2020",

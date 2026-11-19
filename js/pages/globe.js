@@ -26,6 +26,7 @@
       const chainCountries = new Set(D.entities.map((e) => e.country_iso || "").filter(Boolean));
       const filters = { verified: true, suspected: true, missing: true, trade: true, ownership: true };
       let highlight = null; // Set of entity ids
+      let visE = opts.visible ? new Set() : null, visR = opts.visible ? new Set() : null; // presentation reveal
       let selected = null;
 
       const g = new window.Globe(host, { animateIn: true, waitForGlobeReady: true });
@@ -45,8 +46,8 @@
         .polygonsTransitionDuration(0)
         .polygonLabel((f) => f.properties && f.properties.name ? `<div class="scene-tip">${esc(f.properties.name)}</div>` : "");
 
-      const pts = () => located().filter((e) => filters[e.status]);
-      const visRel = (r) => filters[r.status] && filters[r.type === "trade" ? "trade" : "ownership"] && filters[ST.entity[r.from].status] && filters[ST.entity[r.to].status];
+      const pts = () => located().filter((e) => filters[e.status] && (!visE || visE.has(e.id)));
+      const visRel = (r) => (!visR || visR.has(r.id)) && filters[r.status] && filters[r.type === "trade" ? "trade" : "ownership"] && filters[ST.entity[r.from].status] && filters[ST.entity[r.to].status];
       const dim = (id) => highlight && !highlight.has(id);
 
       g.pointsData(pts())
@@ -62,7 +63,7 @@
         .arcStartLat((r) => ST.entity[r.from].lat).arcStartLng((r) => ST.entity[r.from].lon)
         .arcEndLat((r) => ST.entity[r.to].lat).arcEndLng((r) => ST.entity[r.to].lon)
         .arcColor((r) => { const c = COLORS[r.status]; const dimmed = highlight && !(highlight.has(r.from) && highlight.has(r.to)); return dimmed ? ["rgba(139,138,128,.12)", "rgba(139,138,128,.12)"] : [c + "55", c]; })
-        .arcStroke((r) => (r.type === "trade" ? (opts.mini ? 0.7 : 0.55) : 0.3) + (r.status === "verified" ? 0.15 : 0))
+        .arcStroke((r) => ((r.type === "trade" ? (opts.mini ? 0.7 : 0.55) : 0.3) + (r.status === "verified" ? 0.15 : 0)) * (opts.visible ? 1.9 : 1))
         .arcDashLength((r) => (r.status === "verified" ? 0.6 : r.status === "suspected" ? 0.25 : 0.05))
         .arcDashGap((r) => (r.status === "verified" ? 0.25 : r.status === "suspected" ? 0.18 : 0.12))
         .arcDashInitialGap(() => Math.random())
@@ -70,7 +71,7 @@
         .arcAltitudeAutoScale(0.42)
         .arcLabel(relTip);
 
-      const rings = () => located().filter((e) => ST.isFlagged(e) && filters[e.status]);
+      const rings = () => located().filter((e) => ST.isFlagged(e) && filters[e.status] && (!visE || visE.has(e.id)));
       g.ringsData(rings())
         .ringLat("lat").ringLng("lon")
         .ringColor(() => (t) => `rgba(180,72,45,${Math.max(0, 1 - t)})`)
@@ -106,6 +107,13 @@
         select(id) { selected = id; g.pointAltitude(g.pointAltitude()); },
         setHighlight(ids) { highlight = ids ? new Set(ids) : null; g.pointColor(g.pointColor()); g.arcColor(g.arcColor()); },
         setFilter(k, v) { filters[k] = v; refresh(); },
+        setVisible(ents, rels) { visE = new Set(ents); visR = new Set(rels); refresh(); },
+        setLabels(list) {
+          g.htmlElementsData(list.filter((x) => ST.entity[x.id] && ST.entity[x.id].lat != null))
+            .htmlLat((x) => ST.entity[x.id].lat).htmlLng((x) => ST.entity[x.id].lon).htmlAltitude(0.03)
+            .htmlElement((x) => { const wrap = document.createElement("div"); wrap.style.pointerEvents = "none"; wrap.innerHTML = `<div class="globe-tag ${x.cls || ""}"><b>${esc(x.text)}</b>${x.sub ? `<span>${esc(x.sub)}</span>` : ""}</div>`; return wrap; });
+        },
+        view(lat, lng, alt, ms = 1600) { ctl.autoRotate = false; g.pointOfView({ lat, lng, altitude: alt }, ms); },
         autoRotate(v) { ctl.autoRotate = v; },
         onPoint(fn) { g.onPointClick(fn); },
         onArc(fn) { g.onArcClick(fn); },
@@ -130,15 +138,16 @@
     const rels = ST.relsOf(e.id);
     return `<button class="x" aria-label="Close">✕</button>
       <span class="kicker" style="margin:0">${esc(ST.stageById[e.stage]?.label || e.stage)}</span>
-      <h2>${esc(e.name)}</h2>
-      <div class="chips">${ST.badge(e.status)} ${ST.flagChips(e)}</div>
+      <h2>${esc(ST.name(e))}</h2>
+      <p class="muted small">${esc(e.name)}</p>
+      ${ST.plain(esc(e.plainRole || e.role || ""))}
+      <div class="chips" style="margin-top:12px">${ST.badge(e.status)} ${ST.flagChips(e)}</div>
       <p class="muted small" style="margin-top:10px">${esc([e.city, e.province, e.country].filter(Boolean).join(", "))}${e.approx ? " · approximate location" : ""}</p>
-      <p style="margin-top:10px">${esc(e.role || "")}</p>
       <div class="panel-h">Links (${rels.length})</div>
       <ul class="rel-list">${rels.slice(0, 8).map((r) => {
         const other = ST.entity[r.from === e.id ? r.to : r.from];
         const dir = r.type === "trade" ? (r.from === e.id ? "supplies" : "buys from") : (r.from === e.id ? "owns" : "owned by");
-        return `<li><span class="dot ${r.status}"></span><span>${dir} ${ST.entityLink(other.id)}<br><small>${esc(r.label || "")} · ${ST.STATUS[r.status].short}</small></span></li>`;
+        return `<li><span class="dot ${r.status}"></span><span>${dir} <a class="ent-link" href="#/company/${other.id}">${esc(ST.name(other))}</a><br><small>${esc(r.label || "")} · ${ST.STATUS[r.status].short}</small></span></li>`;
       }).join("")}</ul>
       <div class="row" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px">
         <a class="btn btn-primary btn-sm" href="#/company/${e.id}">Company file →</a>
@@ -149,7 +158,8 @@
     const a = ST.entity[r.from], b = ST.entity[r.to];
     return `<button class="x" aria-label="Close">✕</button>
       <span class="kicker" style="margin:0">${r.type === "trade" ? "Trade link" : "Ownership link"}</span>
-      <h2>${esc(a.short || a.name)} → ${esc(b.short || b.name)}</h2>
+      <h2>${esc(ST.name(a))} → ${esc(ST.name(b))}</h2>
+      ${ST.plain(r.type === "trade" ? `${esc(ST.name(a))} sells to ${esc(ST.name(b))}. ${ST.STATUS[r.status].plain}` : `${esc(ST.name(a))} owns part of ${esc(ST.name(b))}. ${ST.STATUS[r.status].plain}`)}
       <div class="chips">${ST.badge(r.status)} ${(r.hs_codes || []).map((h) => `<span class="flag">HS ${esc(h)}</span>`).join("")}</div>
       <p style="margin-top:12px"><b>${esc(r.label || "")}</b>${r.date_range ? " · " + esc(r.date_range) : ""}</p>
       <p style="margin-top:8px">${esc(r.detail || "")}</p>
@@ -206,7 +216,7 @@
       <div class="globe-panel card">
         <span class="kicker" style="margin-bottom:8px">3D trade globe · live data</span>
         <h1>Follow the goods</h1>
-        <p class="sub">Each arc is a traced link between two companies, coloured by evidence. Flowing dashes show goods moving from supplier to buyer. Red pulses mark companies on a US forced-labour list.</p>
+        <p class="sub">Each line connects a seller to a buyer. <b style="color:var(--forest-2)">Green</b> = proven, <b style="color:var(--amber-deep)">orange</b> = suspected, grey = unknown. A <b style="color:var(--red)">red pulse</b> means the company is on a US forced-labour blacklist. Click anything.</p>
         <div class="ctrls">
           <div class="row"><button class="btn btn-amber btn-sm" id="tourBtn" type="button" aria-pressed="false">▶ Guided tour</button><button class="btn btn-ghost btn-sm" id="resetBtn" type="button">Reset view</button><button class="btn btn-ghost btn-sm" id="spinBtn" type="button" aria-pressed="true">Spin</button></div>
           <div class="chips"><span class="lbl">Evidence</span>${["verified", "suspected", "missing"].map((s) => `<button class="chip is-on" data-f="${s}" type="button"><i class="sw" style="background:${COLORS[s]}"></i>${ST.STATUS[s].short}</button>`).join("")}</div>
@@ -216,7 +226,7 @@
       </div>
       <div class="globe-legend card">
         ${Object.entries({ silicon: "Silicon", polysilicon: "Polysilicon", wafer: "Wafer", cell: "Cell", module: "Module", importer: "Importer" }).filter(([k]) => D.entities.some((e) => e.stage === k)).map(([k, v]) => `<span><i style="background:${STAGE_COLORS[k]};width:10px;height:10px;border-radius:50%"></i>${v}</span>`).join("")}
-        <span><i style="background:#b4482d;width:10px;height:10px;border-radius:50%;box-shadow:0 0 0 3px rgba(180,72,45,.25)"></i>US forced-labour list</span>
+        <span><i style="background:#b4482d;width:10px;height:10px;border-radius:50%;box-shadow:0 0 0 3px rgba(180,72,45,.25)"></i>On a US forced-labour blacklist</span>
       </div>`;
 
     if (!ST.webglOK()) { $("#globeHost").innerHTML = '<div class="fallback" style="padding-top:30vh">This view needs WebGL. Try the <a href="#/network">network</a> or <a href="#/companies">company files</a>.</div>'; return; }

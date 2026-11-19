@@ -51,19 +51,62 @@
     const rels = ST.relsOf(id);
     c.innerHTML = `<button class="x" aria-label="Close">✕</button>
       <span class="kicker" style="margin:0">${esc(ST.stageById[e.stage]?.label || e.stage)}</span>
-      <h2>${esc(e.name)}</h2>
-      <div class="chips">${ST.badge(e.status)} ${ST.flagChips(e)}</div>
-      <p class="muted small" style="margin-top:10px">${esc([e.city, e.country].filter(Boolean).join(", "))}</p>
-      <p style="margin-top:8px">${esc(e.role || "")}</p>
+      <h2>${esc(ST.name(e))}</h2>
+      <p class="muted small">${esc(e.name)} · ${esc([e.city, e.country].filter(Boolean).join(", "))}</p>
+      ${ST.plain(esc(e.plainRole || e.role || ""))}
+      <div class="chips" style="margin-top:12px">${ST.badge(e.status)} ${ST.flagChips(e)}</div>
       <div class="panel-h">Links (${rels.length})</div>
       <ul class="rel-list">${rels.map((r) => {
         const o = ST.entity[r.from === id ? r.to : r.from];
         const dir = r.type === "trade" ? (r.from === id ? "supplies" : "buys from") : (r.from === id ? "owns" : "owned by");
-        return `<li><span class="dot ${r.status}"></span><span>${dir} <a href="#" class="ent-link" data-jump="${o.id}">${esc(o.short || o.name)}</a><br><small>${esc(r.label || "")} · ${ST.STATUS[r.status].short}</small></span></li>`;
+        return `<li><span class="dot ${r.status}"></span><span>${dir} <a href="#" class="ent-link" data-jump="${o.id}">${esc(ST.name(o))}</a><br><small>${esc(r.label || "")} · ${ST.STATUS[r.status].short}</small></span></li>`;
       }).join("")}</ul>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px"><a class="btn btn-primary btn-sm" href="#/company/${e.id}">Company file →</a>${e.lat != null ? `<a class="btn btn-ghost btn-sm" href="#/globe?focus=${e.id}">On globe</a>` : ""}</div>`;
     $(".x", c).addEventListener("click", () => { showCard(null); state.hl = null; refreshStyles(); });
     $$("[data-jump]", c).forEach((a) => a.addEventListener("click", (ev) => { ev.preventDefault(); focusNode(a.dataset.jump); }));
+  }
+
+  let buildTimer = null;
+  function buildUp() {
+    if (!g) return;
+    clearInterval(buildTimer);
+    state.hl = null; state.path = false; showCard(null);
+    $("#pathBtn").setAttribute("aria-pressed", "false");
+    const full = data();
+    const byId = Object.fromEntries(full.nodes.map((n) => [n.id, n]));
+    // breadth-first from the US importer: the chain grows the way an investigator works
+    const start = (D.meta.path || [])[0];
+    const order = [], seen = new Set([start]), queue = [start];
+    while (queue.length) {
+      const id = queue.shift(); if (byId[id]) order.push(id);
+      D.relationships.filter((r) => r.from === id || r.to === id).map((r) => (r.from === id ? r.to : r.from))
+        .sort((a, b) => (D.meta.path.includes(b) ? 1 : 0) - (D.meta.path.includes(a) ? 1 : 0))
+        .forEach((x) => { if (!seen.has(x)) { seen.add(x); queue.push(x); } });
+    }
+    full.nodes.forEach((n) => { if (!order.includes(n.id)) order.push(n.id); });
+    const shown = new Set();
+    const cap = $("#netCaption"); cap.hidden = false;
+    g.graphData({ nodes: [], links: [] });
+    let i = 0;
+    const step = () => {
+      if (i >= order.length) {
+        clearInterval(buildTimer);
+        cap.innerHTML = `<b>Done.</b> ${order.length} companies and ${full.links.length} links. Green is proven, orange suspected, grey unknown.`;
+        setTimeout(() => g && g.zoomToFit(1000, 50), 300);
+        return;
+      }
+      const id = order[i++]; shown.add(id);
+      const n = byId[id], e = n.e;
+      // place the new node next to something it is linked to, so it "grows" out of the web
+      const anchor = full.links.find((l) => (l.r.from === id && shown.has(l.r.to)) || (l.r.to === id && shown.has(l.r.from)));
+      if (anchor) { const o = byId[anchor.r.from === id ? anchor.r.to : anchor.r.from]; if (o.x != null) { n.x = o.x + (Math.random() - .5) * 20; n.y = o.y + (Math.random() - .5) * 20; n.z = (o.z || 0) + (Math.random() - .5) * 20; } }
+      g.graphData({ nodes: full.nodes.filter((x) => shown.has(x.id)), links: full.links.filter((l) => shown.has(l.r.from) && shown.has(l.r.to)) });
+      const link = anchor ? anchor.r : null;
+      cap.innerHTML = `<span class="step-n">${i} / ${order.length}</span><b>${esc(ST.name(e))}</b> ${ST.badge(e.status)}<br><span>${esc(e.plainRole || "")}</span>${link ? `<br><small>${link.type === "trade" ? "Linked by trade" : "Linked by ownership"} · ${ST.STATUS[link.status].plain}</small>` : ""}`;
+      if (i % 3 === 0 || i < 3) setTimeout(() => g && g.zoomToFit(700, 70), 250);
+    };
+    step();
+    buildTimer = setInterval(step, ST.prefersReducedMotion() ? 400 : 1700);
   }
 
   function tracePath() {
@@ -83,9 +126,10 @@
       <div class="net-panel card">
         <span class="kicker" style="margin-bottom:8px">Ownership &amp; trade network</span>
         <h1>The web behind a panel</h1>
-        <p class="sub">Drag to rotate, scroll to zoom, click a company to focus it. Particles flow from supplier to buyer along trade links. Thin violet lines show ownership.</p>
+        <p class="sub">Each ball is a company. Lines show who sells to whom; moving dots are goods flowing toward the US buyer. Purple lines mean "owns". Drag to spin, click a ball for details.</p>
         <div class="ctrls">
           <div class="row" style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn btn-primary btn-sm" id="buildBtn" type="button">▶ Build it step by step</button>
             <button class="btn btn-amber btn-sm" id="pathBtn" type="button" aria-pressed="false">Trace the main path</button>
             <button class="btn btn-ghost btn-sm" id="fitBtn" type="button">Fit view</button>
           </div>
@@ -98,8 +142,9 @@
           <div class="chips"><span class="lbl">Links</span><button class="chip is-on" type="button" data-f="trade">Trade</button><button class="chip is-on" type="button" data-f="ownership">Ownership</button></div>
         </div>
       </div>
+      <div class="net-caption card" id="netCaption" hidden aria-live="polite"></div>
       <div class="net-legend card">
-        <span><i style="background:${COLORS.verified}"></i>Verified</span><span><i style="background:${COLORS.suspected}"></i>Suspected</span><span><i style="background:${COLORS.missing}"></i>Missing</span><span><i style="background:#b4482d"></i>On US forced-labour list</span><span><i style="background:#6a5fa8;border-radius:2px;height:3px;width:16px"></i>Ownership</span>
+        <span><i style="background:${COLORS.verified}"></i>Proven</span><span><i style="background:${COLORS.suspected}"></i>Suspected</span><span><i style="background:${COLORS.missing}"></i>Unknown</span><span><i style="background:#b4482d"></i>On a US forced-labour blacklist</span><span><i style="background:#6a5fa8;border-radius:2px;height:3px;width:16px"></i>Ownership</span>
       </div>`;
 
     if (!ST.webglOK()) { $("#graphHost").innerHTML = '<div class="fallback" style="padding-top:30vh">This view needs WebGL. Try the <a href="#/companies">company files</a>.</div>'; return; }
@@ -121,7 +166,7 @@
           if (state.hl && !state.hl.has(n.id)) return "rgba(190,184,168,.35)";
           return ST.isFlagged(n.e) ? "#b4482d" : COLORS[n.e.status];
         })
-        .nodeLabel((n) => `<div class="scene-tip"><b>${esc(n.e.name)}</b><br>${esc(ST.stageById[n.e.stage]?.label || n.e.stage)} · ${esc(n.e.country || "")}<br>${esc(ST.STATUS[n.e.status].label)}</div>`)
+        .nodeLabel((n) => `<div class="scene-tip"><b>${esc(ST.name(n.e))}</b><br>${esc(n.e.name)}<br>${esc(ST.stageById[n.e.stage]?.label || n.e.stage)} · ${esc(n.e.country || "")}<br>${esc(ST.STATUS[n.e.status].label)}</div>`)
         .linkColor((l) => {
           const on = !state.hl || (state.hl.has(l.r.from) && state.hl.has(l.r.to));
           if (!on) return "rgba(190,184,168,.25)";
@@ -165,7 +210,7 @@
         const nodes = g.graphData().nodes;
         nodes.forEach((n) => {
           let el = labels[n.id];
-          if (!el) { el = labels[n.id] = document.createElement("span"); el.className = "net-label"; el.textContent = n.e.short || n.e.name; layer.appendChild(el); }
+          if (!el) { el = labels[n.id] = document.createElement("span"); el.className = "net-label"; el.textContent = ST.name(n.e); layer.appendChild(el); }
           if (n.x == null) return;
           const p = project(n.x, n.y, n.z || 0);
           const dim = state.hl && !state.hl.has(n.id);
@@ -184,10 +229,12 @@
         g.zoomToFit(1000, 40);
         if (r.params.focus && ST.entity[r.params.focus]) setTimeout(() => focusNode(r.params.focus), 600);
         if (r.params.path) setTimeout(() => !state.path && tracePath(), 600);
+        if (r.params.build) setTimeout(buildUp, 300);
       }, 1600);
     }).catch(() => { $("#graphHost").innerHTML = '<div class="fallback" style="padding-top:30vh">Could not load the 3D library.</div>'; });
 
     $("#pathBtn").addEventListener("click", () => g && tracePath());
+    $("#buildBtn").addEventListener("click", buildUp);
     $("#fitBtn").addEventListener("click", () => g && g.zoomToFit(1000, 40));
     $$("[data-dim]").forEach((b) => b.addEventListener("click", () => {
       $$("[data-dim]").forEach((x) => x.classList.toggle("is-on", x === b));
@@ -219,6 +266,7 @@
     destroy() {
       if (ro) ro.disconnect();
       cancelAnimationFrame(raf);
+      clearInterval(buildTimer);
       if (g) { try { g.pauseAnimation(); g._destructor && g._destructor(); } catch (e) {} }
       g = null; state.hl = null; state.path = false; state.tier = false; state.dims = 3; state.flow = true;
       Object.keys(state.filters).forEach((k) => (state.filters[k] = true));

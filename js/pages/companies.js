@@ -11,7 +11,7 @@
       <header class="page-head">
         <span class="kicker">Company files · ${D.entities.length} entities</span>
         <h1>Everyone in the chain</h1>
-        <p class="sub">Every company and gap we traced, from the US importer back to the smelter. Each file lists where the company sits in the chain, any official flags, and the records behind every link.</p>
+        ${ST.plain("One card per company in the chain. Click any card to see what it does, who it trades with, and the proof.")}
       </header>
       <div class="toolbar">
         <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><input id="q" type="search" placeholder="Search companies, cities, countries…" aria-label="Search companies" /></label>
@@ -33,7 +33,8 @@
       $("#grid").innerHTML = list.map((e) => `
         <a class="ent-card card ${e.status}" href="#/company/${e.id}">
           <span class="stage">${esc(ST.stageById[e.stage]?.label || e.stage)}</span>
-          <h3>${esc(e.name)}</h3>
+          <h3>${esc(ST.name(e))}</h3>
+          <span class="loc">${esc(e.short || e.name)}</span>
           <span class="loc">${esc([e.city, e.province, e.country].filter(Boolean).join(", ") || "Location unknown")}</span>
           <div class="flags">${ST.badge(e.status)}${ST.flagChips(e)}</div>
           <div class="foot"><span>${ST.degree(e.id)} links · ${(e.source_ids || []).length} records</span><span>Open →</span></div>
@@ -105,8 +106,9 @@
       <header class="profile-head">
         <div>
           <span class="kicker">${esc(ST.stageById[e.stage]?.label || e.stage)}</span>
-          <h1>${esc(e.short || e.name)}</h1>
-          ${e.short && e.short !== e.name ? `<p class="reg-name">Registered name: ${esc(e.name)}${e.alias ? ` · also listed as ${esc(e.alias)}` : ""}</p>` : ""}
+          <h1>${esc(ST.name(e))}</h1>
+          <p class="reg-name">Registered name: ${esc(e.name)}${e.alias ? ` · also listed as ${esc(e.alias)}` : ""}</p>
+          ${ST.plain(esc(e.plainRole || "") + (ST.isFlagged(e) && !/list/i.test(e.plainRole || "") ? " <b>It is on a US government blacklist.</b>" : ""))}
           <div class="meta">${ST.badge(e.status)} ${ST.flagChips(e)} <span class="muted">${esc([e.city, e.province, e.country].filter(Boolean).join(", "))}</span></div>
         </div>
         <div class="profile-actions">
