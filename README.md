@@ -68,6 +68,7 @@ To refresh: re-run the investigation with Claude Code (Sayari, Tradeverifyd and 
 
 ```sh
 python3 scripts/build_data.py research
+scripts/bump_version.sh                      # so browsers fetch the new files
 git commit -am "Refresh data" && git push   # GitHub Pages redeploys in ~1 min
 ```
 

@@ -66,7 +66,7 @@
     return `${+m[3]} ${M[+m[2] - 1]} ${m[1]}`;
   };
 
-  /* ---------- plain words + glossary ---------- */
+  /* ---------- key-sentence callouts + glossary ---------- */
   ST.plain = (text) => text ? `<p class="plain"><svg class="plain-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></g></svg><span>${text}</span></p>` : "";
   ST.term = (key, text) => `<span class="term" tabindex="0" data-term="${key}">${text}</span>`;
   // auto-link glossary words in a plain-text string (first occurrence of each)
