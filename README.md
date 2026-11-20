@@ -45,7 +45,7 @@ Suggested flow: Present mode (2 min) → open the **Network** and press **Build 
 ## Plain language
 
 - Evidence labels are **Proven** (we have the paperwork), **Suspected** (clues, no paperwork) and **Unknown** (we looked, found nothing). The Method page maps these to the technical terms.
-- Every page has an **"In plain words"** line.
+- Every page, finding and company has one highlighted key sentence (amber callout with a sun icon) to read out loud.
 - Dotted words (polysilicon, wafer, UFLPA, blacklist, Xinjiang…) show a definition on hover; the full glossary is on the Method page.
 - Companies have simple names ("Panel factory in Vietnam") with the registered name underneath.
 
